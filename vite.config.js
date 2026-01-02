@@ -35,10 +35,12 @@ const pages = htmlFiles.map((file) => ({
   },
 }));
 
+const isMinify = process.env.BUILD_MINIFY !== "false";
+
 export default defineConfig({
   plugins: [
     createHtmlPlugin({
-      minify: true,
+      minify: isMinify,
       pages: pages,
     }),
   ],
@@ -50,5 +52,6 @@ export default defineConfig({
     outDir: "dist",
     assetsDir: "assets",
     sourcemap: true,
+    minify: isMinify,
   },
 });
