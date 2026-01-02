@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap"
+  rel="stylesheet"
+/>
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ["Outfit", "sans-serif"],
+        },
+        colors: {
+          dark: {
+            950: "#0a0a0f", // Main BG
+            900: "#13131f", // Card BG
+            800: "#1c1c2e", // Hover/Secondary
+          },
+          neon: {
+            blue: "#00f2ff",
+            purple: "#bc13fe",
+            green: "#0afff0", // Cyberpunk green
+          },
+        },
+        boxShadow: {
+          "neon-blue":
+            '0 0 5px theme("colors.cyan.500"), 0 0 20px theme("colors.cyan.900")',
+          "neon-purple":
+            '0 0 5px theme("colors.fuchsia.500"), 0 0 20px theme("colors.fuchsia.900")',
+        },
+        animation: {
+          "spin-slow": "spin 3s linear infinite",
+        },
+      },
+    },
+  };
+</script>
+
+<!-- Alpine.js -->
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+></script>
+
+<style>
+  [x-cloak] {
+    display: none !important;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0a0a0f;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+  }
+
+  /* Utility for scrollable areas */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 5px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 10px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+  }
+
+  /* Subtle Grid Background Effect */
+  .bg-grid-pattern {
+    background-image: linear-gradient(to right, #1f2937 1px, transparent 1px),
+      linear-gradient(to bottom, #1f2937 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+  }
+</style>
+
+    <title>Nexus Admin | Button Groups</title>
+    <style>
+      .btn-group-shadow {
+        box-shadow: 0 0 20px rgba(6, 182, 212, 0.1);
+      }
+      .btn-glow-cyan:hover {
+        box-shadow: 0 0 15px rgba(6, 182, 212, 0.5);
+      }
+      .btn-glow-fuchsia:hover {
+        box-shadow: 0 0 15px rgba(217, 70, 239, 0.5);
+      }
+    </style>
+    <script type="module" crossorigin src="/assets/main-DuAhTmAG.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-BRvsZqgH.css">
+  </head>
+  <body
+    class="bg-dark-950 text-slate-300 antialiased selection:bg-cyan-500/30 selection:text-cyan-200 overflow-hidden"
+    x-data="{ sidebarOpen: false }"
+  >
+    <!-- Background Decoration -->
+    <div class="fixed inset-0 z-0 pointer-events-none">
+      <div
+        class="absolute top-0 left-0 w-full h-96 bg-grid-pattern opacity-[0.05]"
+      ></div>
+      <div
+        class="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-purple-900/20 rounded-full blur-[128px]"
+      ></div>
+      <div
+        class="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-cyan-900/20 rounded-full blur-[128px]"
+      ></div>
+    </div>
+
+    <div class="relative z-10 flex h-screen overflow-hidden">
+      <!-- Sidebar -->
+      <aside
+  id="sidebar"
+  class="fixed inset-y-0 left-0 z-50 w-64 bg-dark-900/80 backdrop-blur-xl border-r border-white/5 transition-transform duration-300 lg:static lg:translate-x-0 transform -translate-x-full flex flex-col"
+>
+  <!-- Logo -->
+  <div
+    class="flex items-center justify-center h-20 border-b border-white/5 relative overflow-hidden group flex-shrink-0"
+  >
+    <div
+      class="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+    ></div>
+    <div
+      class="flex items-center space-x-2 text-2xl font-bold tracking-wider text-white relative z-10"
+    >
+      <span class="text-cyan-400 drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]"
+        >NEX</span
+      ><span>US</span>
+    </div>
+  </div>
+
+  <!-- Nav Links -->
+  <nav class="flex-1 overflow-y-auto p-4 space-y-2 mt-4 custom-scrollbar">
+    <!-- Dashboard -->
+    <a
+      href="index.html"
+      class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 group relative overflow-hidden text-slate-400 hover:bg-white/5 hover:text-white"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-1/2 -translate-x-full group-hover:translate-x-0"
+      ></div>
+      <svg
+        class="w-5 h-5 mr-3 transition-colors duration-200 text-slate-500 group-hover:text-cyan-400"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
+        />
+      </svg>
+      <span class="relative z-10">Dashboard</span>
+    </a>
+
+    <!-- Tables -->
+    <a
+      href="tables.html"
+      class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 group relative overflow-hidden text-slate-400 hover:bg-white/5 hover:text-white"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-1/2 -translate-x-full group-hover:translate-x-0"
+      ></div>
+      <svg
+        class="w-5 h-5 mr-3 transition-colors duration-200 text-slate-500 group-hover:text-cyan-400"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M3 10h18M3 14h18m-9-4v8m-7-8v8m14-8v8M3 6a2 2 0 012-2h14a2 2 0 012 2v12a2 2 0 01-2 2H5a2 2 0 01-2-2V6z"
+        />
+      </svg>
+      <span class="relative z-10">Tables</span>
+    </a>
+
+    <!-- Forms -->
+    <a
+      href="forms.html"
+      class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 group relative overflow-hidden text-slate-400 hover:bg-white/5 hover:text-white"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-1/2 -translate-x-full group-hover:translate-x-0"
+      ></div>
+      <svg
+        class="w-5 h-5 mr-3 transition-colors duration-200 text-slate-500 group-hover:text-cyan-400"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+        />
+      </svg>
+      <span class="relative z-10">Forms</span>
+    </a>
+
+    <!-- Cards -->
+    <a
+      href="cards.html"
+      class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 group relative overflow-hidden text-slate-400 hover:bg-white/5 hover:text-white"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-1/2 -translate-x-full group-hover:translate-x-0"
+      ></div>
+      <svg
+        class="w-5 h-5 mr-3 transition-colors duration-200 text-slate-500 group-hover:text-cyan-400"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+        />
+      </svg>
+      <span class="relative z-10">Cards</span>
+    </a>
+
+    <!-- Alerts -->
+    <a
+      href="alerts.html"
+      class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 group relative overflow-hidden text-slate-400 hover:bg-white/5 hover:text-white"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-1/2 -translate-x-full group-hover:translate-x-0"
+      ></div>
+      <svg
+        class="w-5 h-5 mr-3 transition-colors duration-200 text-slate-500 group-hover:text-cyan-400"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+        />
+      </svg>
+      <span class="relative z-10">Alerts</span>
+    </a>
+
+    <!-- Grids -->
+    <a
+      href="grids.html"
+      class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 group relative overflow-hidden text-slate-400 hover:bg-white/5 hover:text-white"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-1/2 -translate-x-full group-hover:translate-x-0"
+      ></div>
+      <svg
+        class="w-5 h-5 mr-3 transition-colors duration-200 text-slate-500 group-hover:text-cyan-400"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM14 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4zM14 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"
+        />
+      </svg>
+      <span class="relative z-10">Grids</span>
+    </a>
+
+    <!-- Buttons -->
+    <a
+      href="buttons.html"
+      class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 group relative overflow-hidden text-slate-400 hover:bg-white/5 hover:text-white"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-1/2 -translate-x-full group-hover:translate-x-0"
+      ></div>
+      <svg
+        class="w-5 h-5 mr-3 transition-colors duration-200 text-slate-500 group-hover:text-cyan-400"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"
+        />
+      </svg>
+      <span class="relative z-10">Buttons</span>
+    </a>
+
+    <!-- Button Groups -->
+    <a
+      href="button_group.html"
+      class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 group relative overflow-hidden text-slate-400 hover:bg-white/5 hover:text-white"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-1/2 -translate-x-full group-hover:translate-x-0"
+      ></div>
+      <svg
+        class="w-5 h-5 mr-3 transition-colors duration-200 text-slate-500 group-hover:text-cyan-400"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 10h16M4 14h16M4 18h16"
+        />
+      </svg>
+      <span class="relative z-10">Button Groups</span>
+    </a>
+
+    <!-- Badge -->
+    <a
+      href="badge.html"
+      class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 group relative overflow-hidden text-slate-400 hover:bg-white/5 hover:text-white"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-1/2 -translate-x-full group-hover:translate-x-0"
+      ></div>
+      <svg
+        class="w-5 h-5 mr-3 transition-colors duration-200 text-slate-500 group-hover:text-cyan-400"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"
+        />
+      </svg>
+      <span class="relative z-10">Badge</span>
+    </a>
+
+    <!-- Tabs & Accordions -->
+    <a
+      href="tabs.html"
+      class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 group relative overflow-hidden text-slate-400 hover:bg-white/5 hover:text-white"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-1/2 -translate-x-full group-hover:translate-x-0"
+      ></div>
+      <svg
+        class="w-5 h-5 mr-3 transition-colors duration-200 text-slate-500 group-hover:text-cyan-400"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h7"
+        />
+      </svg>
+      <span class="relative z-10">Tabs</span>
+    </a>
+
+    <!-- Tooltips -->
+    <a
+      href="tooltips.html"
+      class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 group relative overflow-hidden text-slate-400 hover:bg-white/5 hover:text-white"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-1/2 -translate-x-full group-hover:translate-x-0"
+      ></div>
+      <svg
+        class="w-5 h-5 mr-3 transition-colors duration-200 text-slate-500 group-hover:text-cyan-400"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
+        />
+      </svg>
+      <span class="relative z-10">Tooltips</span>
+    </a>
+
+    <!-- Charts -->
+    <a
+      href="charts.html"
+      class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 group relative overflow-hidden text-slate-400 hover:bg-white/5 hover:text-white"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-1/2 -translate-x-full group-hover:translate-x-0"
+      ></div>
+      <svg
+        class="w-5 h-5 mr-3 transition-colors duration-200 text-slate-500 group-hover:text-cyan-400"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+        />
+      </svg>
+      <span class="relative z-10">Charts</span>
+    </a>
+
+    <!-- Pagination -->
+    <a
+      href="pagination.html"
+      class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 group relative overflow-hidden text-slate-400 hover:bg-white/5 hover:text-white"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-1/2 -translate-x-full group-hover:translate-x-0"
+      ></div>
+      <svg
+        class="w-5 h-5 mr-3 transition-colors duration-200 text-slate-500 group-hover:text-cyan-400"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M7 16l-4-4m0 0l4-4m-4 4h18"
+        />
+      </svg>
+      <span class="relative z-10">Pagination</span>
+    </a>
+
+    <!-- Breadcrumbs -->
+    <a
+      href="breadcrumb.html"
+      class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 group relative overflow-hidden text-slate-400 hover:bg-white/5 hover:text-white"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-1/2 -translate-x-full group-hover:translate-x-0"
+      ></div>
+      <svg
+        class="w-5 h-5 mr-3 transition-colors duration-200 text-slate-500 group-hover:text-cyan-400"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M9 5l7 7-7 7"
+        />
+      </svg>
+      <span class="relative z-10">Breadcrumbs</span>
+    </a>
+
+    <!-- Modals -->
+    <a
+      href="modal.html"
+      class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 group relative overflow-hidden text-slate-400 hover:bg-white/5 hover:text-white"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-1/2 -translate-x-full group-hover:translate-x-0"
+      ></div>
+      <svg
+        class="w-5 h-5 mr-3 transition-colors duration-200 text-slate-500 group-hover:text-cyan-400"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M8 12h.01M12 12h.01M16 12h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </svg>
+      <span class="relative z-10">Modals</span>
+    </a>
+
+    <!-- Popovers -->
+    <a
+      href="popover.html"
+      class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 group relative overflow-hidden text-slate-400 hover:bg-white/5 hover:text-white"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-1/2 -translate-x-full group-hover:translate-x-0"
+      ></div>
+      <svg
+        class="w-5 h-5 mr-3 transition-colors duration-200 text-slate-500 group-hover:text-cyan-400"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
+        />
+      </svg>
+      <span class="relative z-10">Popovers</span>
+    </a>
+
+    <!-- Toasts -->
+    <a
+      href="toast.html"
+      class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 group relative overflow-hidden text-slate-400 hover:bg-white/5 hover:text-white"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-1/2 -translate-x-full group-hover:translate-x-0"
+      ></div>
+      <svg
+        class="w-5 h-5 mr-3 transition-colors duration-200 text-slate-500 group-hover:text-cyan-400"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
+        />
+      </svg>
+      <span class="relative z-10">Toasts</span>
+    </a>
+
+    <!-- Timeline -->
+    <a
+      href="timeline.html"
+      class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 group relative overflow-hidden text-slate-400 hover:bg-white/5 hover:text-white"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-1/2 -translate-x-full group-hover:translate-x-0"
+      ></div>
+      <svg
+        class="w-5 h-5 mr-3 transition-colors duration-200 text-slate-500 group-hover:text-cyan-400"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </svg>
+      <span class="relative z-10">Timeline</span>
+    </a>
+
+    <!-- About -->
+    <a
+      href="about.html"
+      class="nav-link flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 group relative overflow-hidden text-slate-400 hover:bg-white/5 hover:text-white"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-1/2 -translate-x-full group-hover:translate-x-0"
+      ></div>
+      <svg
+        class="w-5 h-5 mr-3 transition-colors duration-200 text-slate-500 group-hover:text-cyan-400"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </svg>
+      <span class="relative z-10">About</span>
+    </a>
+  </nav>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const currentPath =
+        window.location.pathname.split("/").pop() || "index.html";
+      const navLinks = document.querySelectorAll(".nav-link");
+
+      navLinks.forEach((link) => {
+        const href = link.getAttribute("href");
+        if (href === currentPath) {
+          // Active State
+          link.className =
+            "nav-link flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 group relative overflow-hidden bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 shadow-[0_0_15px_rgba(6,182,212,0.1)]";
+
+          // Add the active indicator dot
+          const dot = document.createElement("div");
+          dot.className =
+            "absolute right-3 w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.8)]";
+          link.appendChild(dot);
+        } else {
+          // Inactive State (Default)
+          link.className =
+            "nav-link flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 group relative overflow-hidden text-slate-400 hover:bg-white/5 hover:text-white";
+        }
+      });
+    });
+  </script>
+
+  <!-- User Profile Bottom (Sidebar) -->
+  <div
+    class="flex-shrink-0 w-full p-4 border-t border-white/5 bg-dark-900/50 backdrop-blur-sm"
+  >
+    <div
+      class="flex items-center space-x-3 cursor-pointer hover:bg-white/5 p-2 rounded-xl transition-colors"
+    >
+      <div class="relative">
+        <img
+          src="https://ui-avatars.com/api/?name=Alex+K&background=0E7490&color=fff"
+          alt="Profile"
+          class="w-10 h-10 rounded-full border border-cyan-500/30"
+        />
+        <div
+          class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-dark-900 rounded-full"
+        ></div>
+      </div>
+      <div>
+        <div class="text-sm font-medium text-white">Alex Kai</div>
+        <div class="text-xs text-slate-500">Super Admin</div>
+      </div>
+    </div>
+  </div>
+</aside>
+
+
+      <!-- Main Content -->
+      <main class="flex-1 flex flex-col h-screen overflow-hidden relative">
+        <!-- Header -->
+        <header
+  class="h-20 flex items-center justify-between px-8 border-b border-white/5 bg-dark-950/80 backdrop-blur-md z-40"
+>
+  <!-- Mobile Menu Button -->
+  <button
+    id="mobile-menu-btn"
+    class="lg:hidden text-slate-400 hover:text-white"
+  >
+    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M4 6h16M4 12h16M4 18h16"
+      />
+    </svg>
+  </button>
+
+  <!-- Search Bar -->
+  <div class="hidden md:flex relative group w-96">
+    <div
+      class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+    >
+      <svg
+        class="h-5 w-5 text-slate-500 group-focus-within:text-cyan-400 transition-colors"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+        />
+      </svg>
+    </div>
+    <input
+      type="text"
+      class="block w-full pl-10 pr-3 py-2.5 border border-white/10 rounded-xl leading-5 bg-dark-900 text-slate-300 placeholder-slate-500 focus:outline-none focus:bg-dark-800 focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 focus:shadow-[0_0_15px_rgba(6,182,212,0.15)] transition-all duration-300 sm:text-sm"
+      placeholder="Search dashboard..."
+    />
+  </div>
+
+  <!-- Right Header Actions -->
+  <div class="flex items-center space-x-6">
+    <!-- Notifications -->
+    <div
+      class="relative"
+      x-data="{ notificationsOpen: false }"
+      @click.away="notificationsOpen = false"
+    >
+      <button
+        @click="notificationsOpen = !notificationsOpen"
+        class="relative p-2 text-slate-400 hover:text-white transition-colors rounded-lg hover:bg-white/5"
+      >
+        <span
+          class="absolute top-2 right-2 w-2 h-2 bg-fuchsia-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(217,70,239,0.8)]"
+        ></span>
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+          />
+        </svg>
+      </button>
+
+      <!-- Dropdown UI -->
+      <div
+        x-show="notificationsOpen"
+        x-transition:enter="transition ease-out duration-200"
+        x-transition:enter-start="opacity-0 translate-y-2 scale-95"
+        x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+        x-transition:leave="transition ease-in duration-150"
+        x-transition:leave-start="opacity-100 translate-y-0 scale-100"
+        x-transition:leave-end="opacity-0 translate-y-2 scale-95"
+        class="absolute right-0 mt-3 w-80 bg-dark-900/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5),0_0_20px_rgba(188,19,254,0.05)] overflow-hidden z-50"
+        x-cloak
+      >
+        <!-- Header -->
+        <div
+          class="p-4 border-b border-white/5 flex items-center justify-between"
+        >
+          <h3 class="text-white font-semibold flex items-center">
+            Notifications
+            <span
+              class="ml-2 px-2 py-0.5 bg-fuchsia-500/20 text-fuchsia-400 text-[10px] rounded-full uppercase tracking-wider font-bold"
+              >4 New</span
+            >
+          </h3>
+          <button
+            class="text-xs text-slate-500 hover:text-cyan-400 transition-colors"
+          >
+            Mark all as read
+          </button>
+        </div>
+
+        <!-- Notification List -->
+        <div class="max-h-96 overflow-y-auto custom-scrollbar">
+          <!-- Item 1: Success -->
+          <div
+            class="p-4 border-b border-white/5 hover:bg-white/[0.02] transition-colors cursor-pointer group"
+          >
+            <div class="flex space-x-4">
+              <div class="relative flex-shrink-0">
+                <div
+                  class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20 group-hover:border-emerald-500/40 transition-colors"
+                >
+                  <svg
+                    class="w-5 h-5 text-emerald-400"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </div>
+                <div
+                  class="absolute -top-1 -right-1 w-3 h-3 bg-fuchsia-500 rounded-full border-2 border-dark-900"
+                ></div>
+              </div>
+              <div class="flex-1 min-w-0">
+                <p class="text-sm font-medium text-white truncate">
+                  Payment Received
+                </p>
+                <p class="text-xs text-slate-400 mt-1 line-clamp-2">
+                  Invoice #7782 has been paid in full by CryptoHub LLC.
+                </p>
+                <p
+                  class="text-[10px] text-slate-500 mt-2 font-medium tracking-wide"
+                >
+                  2 MINUTES AGO
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 2: Alert -->
+          <div
+            class="p-4 border-b border-white/5 hover:bg-white/[0.02] transition-colors cursor-pointer group"
+          >
+            <div class="flex space-x-4">
+              <div class="relative flex-shrink-0">
+                <div
+                  class="w-10 h-10 rounded-xl bg-rose-500/10 flex items-center justify-center border border-rose-500/20 group-hover:border-rose-500/40 transition-colors"
+                >
+                  <svg
+                    class="w-5 h-5 text-rose-400"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                    />
+                  </svg>
+                </div>
+                <div
+                  class="absolute -top-1 -right-1 w-3 h-3 bg-fuchsia-500 rounded-full border-2 border-dark-900"
+                ></div>
+              </div>
+              <div class="flex-1 min-w-0">
+                <p class="text-sm font-medium text-white truncate">
+                  Security Alert
+                </p>
+                <p class="text-xs text-slate-400 mt-1 line-clamp-2">
+                  New login detected from Tokyo, JP using Chrome on Mac.
+                </p>
+                <p
+                  class="text-[10px] text-slate-500 mt-2 font-medium tracking-wide"
+                >
+                  45 MINUTES AGO
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 3: Progress -->
+          <div
+            class="p-4 border-b border-white/5 hover:bg-white/[0.02] transition-colors cursor-pointer group"
+          >
+            <div class="flex space-x-4">
+              <div class="relative flex-shrink-0">
+                <div
+                  class="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center border border-cyan-500/20 group-hover:border-cyan-500/40 transition-colors"
+                >
+                  <svg
+                    class="w-5 h-5 text-cyan-400"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M13 10V3L4 14h7v7l9-11h-7z"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div class="flex-1 min-w-0">
+                <p class="text-sm font-medium text-white truncate">
+                  System Update
+                </p>
+                <p class="text-xs text-slate-400 mt-1 line-clamp-2">
+                  Database migration completed for the APAC cluster.
+                </p>
+                <p
+                  class="text-[10px] text-slate-500 mt-2 font-medium tracking-wide"
+                >
+                  3 HOURS AGO
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 4: Message -->
+          <div
+            class="p-4 hover:bg-white/[0.02] transition-colors cursor-pointer group"
+          >
+            <div class="flex space-x-4">
+              <div class="relative flex-shrink-0">
+                <div
+                  class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center border border-purple-500/20 group-hover:border-purple-500/40 transition-colors"
+                >
+                  <svg
+                    class="w-5 h-5 text-purple-400"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div class="flex-1 min-w-0">
+                <p class="text-sm font-medium text-white truncate">
+                  New Feedback
+                </p>
+                <p class="text-xs text-slate-400 mt-1 line-clamp-2">
+                  Alex Rivera left a 5-star review on Nexus Dashboard.
+                </p>
+                <p
+                  class="text-[10px] text-slate-500 mt-2 font-medium tracking-wide"
+                >
+                  1 DAY AGO
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="p-3 border-t border-white/5 bg-white/[0.01]">
+          <button
+            class="w-full py-2 bg-dark-800 hover:bg-white/5 text-xs text-slate-300 hover:text-white rounded-lg transition-all border border-white/5 hover:border-white/10 font-medium"
+          >
+            View All Notifications
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Settings -->
+    <button
+      class="hidden md:block p-2 text-slate-400 hover:text-white transition-colors rounded-lg hover:bg-white/5"
+    >
+      <svg
+        class="w-6 h-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
+        />
+      </svg>
+    </button>
+  </div>
+</header>
+
+
+        <!-- Scrollable Content -->
+        <div class="flex-1 overflow-y-auto p-8 relative scroll-smooth pb-20">
+          <div class="mb-10 text-center max-w-2xl mx-auto">
+            <h1
+              class="text-4xl font-bold text-white mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400"
+            >
+              Button Groups
+            </h1>
+            <p class="text-slate-400">
+              Coordinated button clusters for navigation, filtering, and
+              multi-step actions in the Neon Dark theme.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto">
+            <!-- 1. Basic Button Group -->
+            <div
+              class="bg-dark-900/60 backdrop-blur-md rounded-2xl border border-white/5 p-8 border-l-4 border-l-cyan-500 group hover:border-r hover:border-t hover:border-b hover:border-white/10 transition-all"
+            >
+              <h3 class="text-lg font-semibold text-white mb-6">Basic Group</h3>
+              <div
+                class="inline-flex rounded-xl shadow-sm btn-group-shadow p-1 bg-white/5 border border-white/10"
+              >
+                <button
+                  class="px-5 py-2.5 text-sm font-medium text-white bg-cyan-600 rounded-lg hover:bg-cyan-500 transition-colors"
+                >
+                  Left
+                </button>
+                <button
+                  class="px-5 py-2.5 text-sm font-medium text-slate-300 hover:text-white transition-colors"
+                >
+                  Middle
+                </button>
+                <button
+                  class="px-5 py-2.5 text-sm font-medium text-slate-300 hover:text-white transition-colors"
+                >
+                  Right
+                </button>
+              </div>
+            </div>
+
+            <!-- 2. Outline Button Group -->
+            <div
+              class="bg-dark-900/60 backdrop-blur-md rounded-2xl border border-white/5 p-8 border-l-4 border-l-fuchsia-500 group hover:border-r hover:border-t hover:border-b hover:border-white/10 transition-all"
+            >
+              <h3 class="text-lg font-semibold text-white mb-6">
+                Outline Group
+              </h3>
+              <div
+                class="inline-flex rounded-xl shadow-sm overflow-hidden border border-white/10"
+              >
+                <button
+                  class="px-5 py-2.5 text-sm font-medium text-slate-300 bg-transparent border-r border-white/10 hover:bg-white/5 hover:text-white transition-colors"
+                >
+                  Daily
+                </button>
+                <button
+                  class="px-5 py-2.5 text-sm font-medium text-white bg-fuchsia-600/20 border-r border-white/10 hover:bg-fuchsia-600/30 transition-colors"
+                >
+                  Weekly
+                </button>
+                <button
+                  class="px-5 py-2.5 text-sm font-medium text-slate-300 bg-transparent hover:bg-white/5 hover:text-white transition-colors"
+                >
+                  Monthly
+                </button>
+              </div>
+            </div>
+
+            <!-- 3. Icon Button Group -->
+            <div
+              class="bg-dark-900/60 backdrop-blur-md rounded-2xl border border-white/5 p-8 group hover:border-cyan-500/30 transition-all"
+            >
+              <h3 class="text-lg font-semibold text-white mb-6">Icon Group</h3>
+              <div
+                class="inline-flex rounded-lg shadow-sm border border-white/10 bg-dark-800"
+              >
+                <button
+                  class="p-2.5 text-slate-400 hover:text-cyan-400 border-r border-white/10 transition-all hover:bg-white/5"
+                >
+                  <svg
+                    class="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                    />
+                  </svg>
+                </button>
+                <button
+                  class="p-2.5 text-slate-400 hover:text-cyan-400 border-r border-white/10 transition-all hover:bg-white/5"
+                >
+                  <svg
+                    class="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                    />
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                    />
+                  </svg>
+                </button>
+                <button
+                  class="p-2.5 text-slate-400 hover:text-rose-400 transition-all hover:bg-white/5"
+                >
+                  <svg
+                    class="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-4v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- 4. Vertical Button Group -->
+            <div
+              class="bg-dark-900/60 backdrop-blur-md rounded-2xl border border-white/5 p-8 group hover:border-purple-500/30 transition-all"
+            >
+              <h3 class="text-lg font-semibold text-white mb-6">
+                Vertical Group
+              </h3>
+              <div
+                class="inline-flex flex-col rounded-xl shadow-sm border border-white/10 bg-dark-800 w-full sm:w-48"
+              >
+                <button
+                  class="px-4 py-3 text-sm font-medium text-white border-b border-white/10 hover:bg-white/5 transition-colors text-left flex items-center"
+                >
+                  <span class="w-2 h-2 rounded-full bg-cyan-500 mr-3"></span>
+                  Profile Settings
+                </button>
+                <button
+                  class="px-4 py-3 text-sm font-medium text-slate-300 border-b border-white/10 hover:bg-white/5 transition-colors text-left flex items-center"
+                >
+                  <span class="w-2 h-2 rounded-full bg-fuchsia-500 mr-3"></span>
+                  Security Keys
+                </button>
+                <button
+                  class="px-4 py-3 text-sm font-medium text-slate-300 hover:bg-white/5 transition-colors text-left flex items-center"
+                >
+                  <span class="w-2 h-2 rounded-full bg-emerald-500 mr-3"></span>
+                  Notifications
+                </button>
+              </div>
+            </div>
+
+            <!-- 5. Neon Toggle Group -->
+            <div
+              class="bg-dark-900/60 backdrop-blur-md rounded-2xl border border-white/5 p-8 md:col-span-2 group hover:border-emerald-500/30 transition-all"
+            >
+              <h3 class="text-lg font-semibold text-white mb-6">
+                Neon Toggle Selection
+              </h3>
+              <div class="flex flex-wrap gap-6 items-center">
+                <div
+                  class="flex p-1 bg-dark-800 rounded-2xl border border-white/5 shadow-inner"
+                >
+                  <button
+                    class="px-6 py-2 rounded-xl text-sm font-bold transition-all duration-300 bg-cyan-600 text-white shadow-[0_0_15px_rgba(6,182,212,0.4)]"
+                  >
+                    Active
+                  </button>
+                  <button
+                    class="px-6 py-2 rounded-xl text-sm font-medium text-slate-500 hover:text-slate-300 transition-all duration-300"
+                  >
+                    Pending
+                  </button>
+                  <button
+                    class="px-6 py-2 rounded-xl text-sm font-medium text-slate-500 hover:text-slate-300 transition-all duration-300"
+                  >
+                    Completed
+                  </button>
+                </div>
+
+                <div
+                  class="flex p-1 bg-dark-800 rounded-2xl border border-white/5"
+                >
+                  <button
+                    class="px-6 py-2 rounded-xl text-sm font-medium text-slate-500 hover:text-slate-300 transition-all duration-300"
+                  >
+                    Map
+                  </button>
+                  <button
+                    class="px-6 py-2 rounded-xl text-sm font-bold transition-all duration-300 bg-fuchsia-600 text-white shadow-[0_0_15px_rgba(217,70,239,0.4)]"
+                  >
+                    Satellite
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 6. Mixed Actions Group -->
+            <div
+              class="bg-dark-900/60 backdrop-blur-md rounded-2xl border border-white/5 p-8 group hover:border-orange-500/30 transition-all"
+            >
+              <h3 class="text-lg font-semibold text-white mb-6">
+                Mixed Actions
+              </h3>
+              <div
+                class="flex items-center space-x-0 rounded-xl overflow-hidden shadow-2xl"
+              >
+                <button
+                  class="flex-1 px-4 py-3 bg-cyan-600 hover:bg-cyan-500 text-white font-bold flex items-center justify-center space-x-2 transition-colors"
+                >
+                  <svg
+                    class="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <span>Approve</span>
+                </button>
+                <div class="w-px h-12 bg-white/10"></div>
+                <button
+                  class="px-4 py-3 bg-dark-800 hover:bg-rose-600/20 text-slate-400 hover:text-rose-400 transition-all duration-300"
+                >
+                  <svg
+                    class="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- 7. Breadcrumb Style Group -->
+            <div
+              class="bg-dark-900/60 backdrop-blur-md rounded-2xl border border-white/5 p-8 group hover:border-blue-500/30 transition-all"
+            >
+              <h3 class="text-lg font-semibold text-white mb-6">
+                Step Progression
+              </h3>
+              <div class="flex items-center">
+                <button
+                  class="px-4 py-2 bg-cyan-600 text-white rounded-l-xl text-sm font-medium relative z-30"
+                >
+                  Shipping
+                </button>
+                <div
+                  class="w-4 h-9 bg-cyan-600 relative -ml-2 skew-x-[20deg] z-20 border-r border-white/20"
+                ></div>
+                <button
+                  class="px-6 py-2 bg-dark-800 text-slate-400 text-sm font-medium relative z-10 -ml-2 border-y border-white/10"
+                >
+                  Payment
+                </button>
+                <div
+                  class="w-4 h-9 bg-dark-800 relative -ml-2 skew-x-[20deg] z-5 border-r border-white/10 border-y"
+                ></div>
+                <button
+                  class="px-6 py-2 bg-dark-900/40 text-slate-600 text-sm font-medium rounded-r-xl -ml-2 border border-white/5 cursor-not-allowed"
+                >
+                  Confirm
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Vite Entry Point -->
+  </body>
+</html>
