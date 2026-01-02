@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <%- head %>
+    <title>Alerts | Nexus Admin</title>
+  </head>
+  <body
+    class="bg-dark-950 text-slate-300 antialiased selection:bg-cyan-500/30 selection:text-cyan-200 overflow-hidden"
+    x-data="{ sidebarOpen: false }"
+  >
+    <!-- Background Decoration -->
+    <div class="fixed inset-0 z-0 pointer-events-none">
+      <div
+        class="absolute top-0 left-0 w-full h-96 bg-grid-pattern opacity-[0.05]"
+      ></div>
+      <div
+        class="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-purple-900/20 rounded-full blur-[128px]"
+      ></div>
+      <div
+        class="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-cyan-900/20 rounded-full blur-[128px]"
+      ></div>
+    </div>
+
+    <div class="relative z-10 flex h-screen overflow-hidden">
+      <!-- Sidebar -->
+      <%- sidebar %>
+
+      <!-- Main Content -->
+      <main class="flex-1 flex flex-col h-screen overflow-hidden relative">
+        <!-- Header -->
+        <%- header %>
+
+        <!-- Main Content Area -->
+        <div class="flex-1 overflow-y-auto p-8 relative scroll-smooth">
+          <!-- Page Header -->
+          <div class="mb-8">
+            <h1 class="text-3xl font-bold text-white mb-2">Alerts</h1>
+            <p class="text-slate-400">
+              Various styles of alerts and notifications for feedback.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Glassmorphism Alerts -->
+            <div class="space-y-6">
+              <h2 class="text-xl font-semibold text-white mb-4">
+                Glass Alerts
+              </h2>
+
+              <!-- Success Glass -->
+              <div
+                class="relative bg-emerald-500/10 backdrop-blur-md border border-emerald-500/20 text-emerald-400 px-4 py-3 rounded-xl flex items-center shadow-[0_0_15px_rgba(16,185,129,0.1)]"
+              >
+                <svg
+                  class="w-6 h-6 mr-3 flex-shrink-0"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <div>
+                  <strong class="font-semibold">Success!</strong>
+                  <span class="opacity-90"
+                    >Your changes have been saved successfully.</span
+                  >
+                </div>
+              </div>
+
+              <!-- Error Glass -->
+              <div
+                class="relative bg-rose-500/10 backdrop-blur-md border border-rose-500/20 text-rose-400 px-4 py-3 rounded-xl flex items-center shadow-[0_0_15px_rgba(244,63,94,0.1)]"
+              >
+                <svg
+                  class="w-6 h-6 mr-3 flex-shrink-0"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <div>
+                  <strong class="font-semibold">Error!</strong>
+                  <span class="opacity-90"
+                    >Something went wrong. Please try again.</span
+                  >
+                </div>
+              </div>
+
+              <!-- Warning Glass -->
+              <div
+                class="relative bg-amber-500/10 backdrop-blur-md border border-amber-500/20 text-amber-400 px-4 py-3 rounded-xl flex items-center shadow-[0_0_15px_rgba(245,158,11,0.1)]"
+              >
+                <svg
+                  class="w-6 h-6 mr-3 flex-shrink-0"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                  />
+                </svg>
+                <div>
+                  <strong class="font-semibold">Warning!</strong>
+                  <span class="opacity-90"
+                    >Your subscription is ending soon.</span
+                  >
+                </div>
+              </div>
+
+              <!-- Info Glass -->
+              <div
+                class="relative bg-cyan-500/10 backdrop-blur-md border border-cyan-500/20 text-cyan-400 px-4 py-3 rounded-xl flex items-center shadow-[0_0_15px_rgba(6,182,212,0.1)]"
+              >
+                <svg
+                  class="w-6 h-6 mr-3 flex-shrink-0"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <div>
+                  <strong class="font-semibold">Note:</strong>
+                  <span class="opacity-90"
+                    >System maintenance is scheduled for tonight.</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Left Accent Alerts -->
+            <div class="space-y-6">
+              <h2 class="text-xl font-semibold text-white mb-4">
+                Left Accent Alerts
+              </h2>
+
+              <!-- Success Accent -->
+              <div
+                class="bg-dark-900 border-l-4 border-emerald-500 text-slate-300 px-4 py-3 rounded-r shadow-md flex items-center"
+              >
+                <div class="flex-1">
+                  <p class="font-bold text-emerald-400">Order Completed</p>
+                  <p class="text-sm">The order #4029 has been processed.</p>
+                </div>
+              </div>
+
+              <!-- Error Accent -->
+              <div
+                class="bg-dark-900 border-l-4 border-rose-500 text-slate-300 px-4 py-3 rounded-r shadow-md flex items-center"
+              >
+                <div class="flex-1">
+                  <p class="font-bold text-rose-400">Payment Failed</p>
+                  <p class="text-sm">Please update your payment method.</p>
+                </div>
+              </div>
+
+              <!-- Warning Accent -->
+              <div
+                class="bg-dark-900 border-l-4 border-amber-500 text-slate-300 px-4 py-3 rounded-r shadow-md flex items-center"
+              >
+                <div class="flex-1">
+                  <p class="font-bold text-amber-500">Storage Low</p>
+                  <p class="text-sm">
+                    You are using 95% of your storage space.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Info Accent -->
+              <div
+                class="bg-dark-900 border-l-4 border-cyan-500 text-slate-300 px-4 py-3 rounded-r shadow-md flex items-center"
+              >
+                <div class="flex-1">
+                  <p class="font-bold text-cyan-400">Update Available</p>
+                  <p class="text-sm">
+                    A new version of Nexus Admin is available.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dismissible Alerts (Alpine) -->
+            <div class="lg:col-span-2 space-y-6">
+              <h2 class="text-xl font-semibold text-white mb-4">
+                Dismissible Alerts
+              </h2>
+
+              <div
+                x-data="{ show: true }"
+                x-show="show"
+                x-transition.opacity.duration.300ms
+                class="relative flex items-start p-4 bg-dark-900 border border-white/10 rounded-xl shadow-lg"
+              >
+                <div class="flex-shrink-0 text-cyan-400">
+                  <svg
+                    class="w-6 h-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </div>
+                <div class="ml-4 flex-1">
+                  <h3 class="text-sm font-medium text-white">Welcome back!</h3>
+                  <div class="mt-1 text-sm text-slate-400">
+                    Check out the new features we just launched on the
+                    dashboard.
+                  </div>
+                </div>
+                <button
+                  @click="show = false"
+                  class="ml-4 text-slate-500 hover:text-white transition-colors"
+                >
+                  <svg
+                    class="w-5 h-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              </div>
+
+              <div
+                x-data="{ show: true }"
+                x-show="show"
+                x-transition.opacity.duration.300ms
+                class="relative flex items-start p-4 bg-purple-500/10 border border-purple-500/20 rounded-xl shadow-[0_0_15px_rgba(168,85,247,0.1)]"
+              >
+                <div class="flex-shrink-0 text-purple-400">
+                  <svg
+                    class="w-6 h-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                    />
+                  </svg>
+                </div>
+                <div class="ml-4 flex-1">
+                  <h3 class="text-sm font-medium text-purple-200">
+                    Upload Complete
+                  </h3>
+                  <div class="mt-1 text-sm text-purple-200/70">
+                    Your files have been successfully uploaded to the server.
+                  </div>
+                </div>
+                <button
+                  @click="show = false"
+                  class="ml-4 text-purple-400 hover:text-purple-200 transition-colors"
+                >
+                  <svg
+                    class="w-5 h-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Solid Alerts -->
+            <div class="space-y-6">
+              <h2 class="text-xl font-semibold text-white mb-4">
+                Solid Alerts
+              </h2>
+
+              <div
+                class="bg-indigo-600 text-white px-4 py-3 rounded-xl shadow-lg border border-indigo-500"
+              >
+                <p class="font-bold">Info</p>
+                <p class="text-sm opacity-90">
+                  This is a solid info alert styling.
+                </p>
+              </div>
+
+              <div
+                class="bg-rose-600 text-white px-4 py-3 rounded-xl shadow-lg border border-rose-500"
+              >
+                <p class="font-bold">Danger</p>
+                <p class="text-sm opacity-90">A critical error has occurred.</p>
+              </div>
+            </div>
+
+            <!-- Outline Alerts -->
+            <div class="space-y-6">
+              <h2 class="text-xl font-semibold text-white mb-4">
+                Outline Alerts
+              </h2>
+
+              <div
+                class="border border-cyan-500 text-cyan-400 px-4 py-3 rounded-xl shadow-[0_0_10px_rgba(6,182,212,0.1)] bg-cyan-500/5"
+              >
+                <p class="font-bold">Notice</p>
+                <p class="text-sm">We've updated our privacy policy.</p>
+              </div>
+
+              <div
+                class="border border-fuchsia-500 text-fuchsia-400 px-4 py-3 rounded-xl shadow-[0_0_10px_rgba(217,70,239,0.1)] bg-fuchsia-500/5"
+              >
+                <p class="font-bold">New!</p>
+                <p class="text-sm">Check out the neon theme options.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Toast Notifications Simulation -->
+          <div
+            class="fixed bottom-8 right-8 space-y-4 pointer-events-none z-50"
+          >
+            <div
+              x-data="{ show: true }"
+              x-init="setTimeout(() => show = false, 5000)"
+              x-show="show"
+              x-transition:enter="transition ease-out duration-300"
+              x-transition:enter-start="translate-y-2 opacity-0"
+              x-transition:enter-end="translate-y-0 opacity-100"
+              x-transition:leave="transition ease-in duration-300"
+              x-transition:leave-start="translate-y-0 opacity-100"
+              x-transition:leave-end="translate-y-2 opacity-0"
+              class="pointer-events-auto bg-dark-900/90 backdrop-blur-xl border border-white/10 p-4 rounded-xl shadow-2xl flex items-center min-w-[300px]"
+            >
+              <div
+                class="flex-shrink-0 w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400"
+              >
+                <svg
+                  class="w-6 h-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </div>
+              <div class="ml-3">
+                <p class="text-sm font-medium text-white">Action Successful</p>
+                <p class="text-xs text-slate-400">
+                  Your profile has been updated.
+                </p>
+              </div>
+              <button
+                @click="show = false"
+                class="ml-auto text-slate-500 hover:text-white"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <!-- Vite Entry Point -->
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

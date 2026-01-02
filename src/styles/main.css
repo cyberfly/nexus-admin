@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap");
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
@@ -22,14 +22,32 @@
 /* Subtle Grid Background Effect */
 .bg-grid-pattern {
   background-image: linear-gradient(to right, #1f2937 1px, transparent 1px),
-                    linear-gradient(to bottom, #1f2937 1px, transparent 1px);
+    linear-gradient(to bottom, #1f2937 1px, transparent 1px);
   background-size: 40px 40px;
   mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+}
+
+/* Custom Scrollbar Utility */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 /* Base styles */
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Outfit', sans-serif;
+  font-family: "Outfit", sans-serif;
 }

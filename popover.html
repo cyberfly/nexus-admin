@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <%- head %>
+    <title>Popovers | Nexus Admin</title>
+  </head>
+  <body
+    class="bg-dark-950 text-slate-300 antialiased selection:bg-cyan-500/30 selection:text-cyan-200 overflow-hidden"
+    x-data="{ sidebarOpen: false }"
+  >
+    <!-- Background Decoration -->
+    <div class="fixed inset-0 z-0 pointer-events-none">
+      <div
+        class="absolute top-0 left-0 w-full h-96 bg-grid-pattern opacity-[0.05]"
+      ></div>
+      <div
+        class="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-purple-900/20 rounded-full blur-[128px]"
+      ></div>
+      <div
+        class="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-cyan-900/20 rounded-full blur-[128px]"
+      ></div>
+    </div>
+
+    <div class="relative z-10 flex h-screen overflow-hidden">
+      <!-- Sidebar -->
+      <%- sidebar %>
+
+      <!-- Main Content -->
+      <main class="flex-1 flex flex-col h-screen overflow-hidden relative">
+        <!-- Header -->
+        <%- header %>
+
+        <!-- Content -->
+        <div class="flex-1 overflow-y-auto p-8 relative scroll-smooth">
+          <!-- Page Title -->
+          <div class="mb-8">
+            <h1 class="text-3xl font-bold text-white mb-2">
+              Popovers & Tooltips
+            </h1>
+            <p class="text-slate-400">
+              Floating UI elements for contextual information and interactive
+              overlays.
+            </p>
+          </div>
+
+          <div class="space-y-12">
+            <!-- Basic Popovers -->
+            <section>
+              <h2
+                class="text-xl font-semibold text-white mb-6 flex items-center"
+              >
+                <span
+                  class="w-8 h-8 bg-cyan-500/10 rounded-lg flex items-center justify-center mr-3 text-cyan-400"
+                >
+                  <svg
+                    class="w-5 h-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
+                    />
+                  </svg>
+                </span>
+                Placement Variations
+              </h2>
+
+              <div
+                class="bg-dark-900/60 backdrop-blur-md rounded-2xl p-10 border border-white/5"
+              >
+                <div class="flex flex-wrap justify-center gap-6">
+                  <!-- Popover Top -->
+                  <div x-data="{ open: false }" class="relative inline-block">
+                    <button
+                      @click="open = !open"
+                      class="px-5 py-2.5 bg-dark-800 hover:bg-dark-700 text-white rounded-xl border border-white/5 transition-all text-sm font-medium"
+                    >
+                      Popover Top
+                    </button>
+                    <div
+                      x-show="open"
+                      @click.away="open = false"
+                      x-transition:enter="transition ease-out duration-200"
+                      x-transition:enter-start="opacity-0 translate-y-2 scale-95"
+                      x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+                      x-transition:leave="transition ease-in duration-100"
+                      x-transition:leave-start="opacity-100 translate-y-0 scale-100"
+                      x-transition:leave-end="opacity-0 translate-y-2 scale-95"
+                      class="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-56 z-50 bg-dark-800 border border-white/10 rounded-xl shadow-2xl p-4 overflow-hidden"
+                    >
+                      <div
+                        class="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-transparent opacity-50"
+                      ></div>
+                      <div class="relative z-10">
+                        <h4
+                          class="text-white font-semibold text-xs uppercase tracking-wider mb-2"
+                        >
+                          Top Popover
+                        </h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                          This popover appears above the trigger element with a
+                          smooth float animation.
+                        </p>
+                      </div>
+                      <!-- Arrow -->
+                      <div
+                        class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-dark-800 border-r border-b border-white/10 rotate-45"
+                      ></div>
+                    </div>
+                  </div>
+
+                  <!-- Popover Right -->
+                  <div x-data="{ open: false }" class="relative inline-block">
+                    <button
+                      @click="open = !open"
+                      class="px-5 py-2.5 bg-dark-800 hover:bg-dark-700 text-white rounded-xl border border-white/5 transition-all text-sm font-medium"
+                    >
+                      Popover Right
+                    </button>
+                    <div
+                      x-show="open"
+                      @click.away="open = false"
+                      x-transition:enter="transition ease-out duration-200"
+                      x-transition:enter-start="opacity-0 -translate-x-2 scale-95"
+                      x-transition:enter-end="opacity-100 translate-x-0 scale-100"
+                      class="absolute left-full top-1/2 -translate-y-1/2 ml-3 w-56 z-50 bg-dark-800 border border-white/10 rounded-xl shadow-2xl p-4"
+                    >
+                      <h4
+                        class="text-fuchsia-400 font-semibold text-xs uppercase tracking-wider mb-2"
+                      >
+                        Right Side
+                      </h4>
+                      <p class="text-xs text-slate-400 leading-relaxed">
+                        Useful for showing additional details without
+                        obstructing vertical flow.
+                      </p>
+                      <!-- Arrow -->
+                      <div
+                        class="absolute top-1/2 -left-1 -translate-y-1/2 w-2 h-2 bg-dark-800 border-l border-t border-white/10 rotate-45"
+                      ></div>
+                    </div>
+                  </div>
+
+                  <!-- Popover Bottom -->
+                  <div x-data="{ open: false }" class="relative inline-block">
+                    <button
+                      @click="open = !open"
+                      class="px-5 py-2.5 bg-dark-800 hover:bg-dark-700 text-white rounded-xl border border-white/5 transition-all text-sm font-medium"
+                    >
+                      Popover Bottom
+                    </button>
+                    <div
+                      x-show="open"
+                      @click.away="open = false"
+                      x-transition:enter="transition ease-out duration-200"
+                      x-transition:enter-start="opacity-0 -translate-y-2 scale-95"
+                      x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+                      class="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-56 z-50 bg-dark-800 border border-white/10 rounded-xl shadow-2xl p-4"
+                    >
+                      <h4
+                        class="text-cyan-400 font-semibold text-xs uppercase tracking-wider mb-2"
+                      >
+                        Bottom Flow
+                      </h4>
+                      <p class="text-xs text-slate-400 leading-relaxed">
+                        The most common placement for contextual dropdowns or
+                        info boxes.
+                      </p>
+                      <!-- Arrow -->
+                      <div
+                        class="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-dark-800 border-l border-t border-white/10 rotate-45"
+                      ></div>
+                    </div>
+                  </div>
+
+                  <!-- Popover Left -->
+                  <div x-data="{ open: false }" class="relative inline-block">
+                    <button
+                      @click="open = !open"
+                      class="px-5 py-2.5 bg-dark-800 hover:bg-dark-700 text-white rounded-xl border border-white/5 transition-all text-sm font-medium"
+                    >
+                      Popover Left
+                    </button>
+                    <div
+                      x-show="open"
+                      @click.away="open = false"
+                      x-transition:enter="transition ease-out duration-200"
+                      x-transition:enter-start="opacity-0 translate-x-2 scale-95"
+                      x-transition:enter-end="opacity-100 translate-x-0 scale-100"
+                      class="absolute right-full top-1/2 -translate-y-1/2 mr-3 w-56 z-50 bg-dark-800 border border-white/10 rounded-xl shadow-2xl p-4"
+                    >
+                      <h4
+                        class="text-amber-400 font-semibold text-xs uppercase tracking-wider mb-2"
+                      >
+                        Left Side
+                      </h4>
+                      <p class="text-xs text-slate-400 leading-relaxed">
+                        Positioned to the left, perfect for right-aligned UI
+                        components.
+                      </p>
+                      <!-- Arrow -->
+                      <div
+                        class="absolute top-1/2 -right-1 -translate-y-1/2 w-2 h-2 bg-dark-800 border-r border-b border-white/10 rotate-45"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Rich Content Popovers -->
+            <section>
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- User Profile Popover -->
+                <div
+                  class="bg-dark-900/60 backdrop-blur-md rounded-2xl p-8 border border-white/5"
+                >
+                  <h3 class="text-white font-semibold mb-6">
+                    Rich Content Popover
+                  </h3>
+                  <div x-data="{ open: false }" class="relative">
+                    <button
+                      @click="open = !open"
+                      class="flex items-center space-x-3 p-2 bg-dark-800 hover:bg-dark-700 rounded-2xl border border-white/5 transition-all group"
+                    >
+                      <img
+                        src="https://ui-avatars.com/api/?name=John+Doe&background=0284c7&color=fff"
+                        class="w-10 h-10 rounded-xl"
+                        alt="John"
+                      />
+                      <div class="text-left pr-4">
+                        <div
+                          class="text-sm font-semibold text-white group-hover:text-cyan-400 transition-colors"
+                        >
+                          John Doe
+                        </div>
+                        <div class="text-xs text-slate-500">
+                          Product Designer
+                        </div>
+                      </div>
+                      <svg
+                        class="w-4 h-4 text-slate-600"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    </button>
+
+                    <div
+                      x-show="open"
+                      @click.away="open = false"
+                      x-transition:enter="transition ease-out duration-200"
+                      x-transition:enter-start="opacity-0 translate-y-4"
+                      x-transition:enter-end="opacity-100 translate-y-0"
+                      class="absolute left-0 mt-4 w-72 z-50 bg-dark-900 border border-white/10 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+                    >
+                      <div
+                        class="h-20 bg-gradient-to-r from-cyan-600/20 to-fuchsia-600/20 relative"
+                      >
+                        <div class="absolute -bottom-6 left-6">
+                          <img
+                            src="https://ui-avatars.com/api/?name=John+Doe&background=0284c7&color=fff"
+                            class="w-16 h-16 rounded-2xl border-4 border-dark-900 shadow-xl"
+                            alt="John"
+                          />
+                        </div>
+                      </div>
+                      <div class="pt-8 p-6">
+                        <div class="flex justify-between items-start mb-4">
+                          <div>
+                            <h4 class="text-white font-bold text-lg">
+                              John Doe
+                            </h4>
+                            <p class="text-xs text-slate-500">
+                              @johndoe_design
+                            </p>
+                          </div>
+                          <button
+                            class="px-3 py-1 bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 text-xs font-bold rounded-lg transition-colors border border-cyan-500/20"
+                          >
+                            Follow
+                          </button>
+                        </div>
+                        <p class="text-xs text-slate-400 leading-relaxed mb-6">
+                          Focused on creating immersive digital experiences
+                          through clean code and neon aesthetics.
+                        </p>
+                        <div class="flex items-center space-x-4">
+                          <div class="text-center">
+                            <div class="text-white font-bold text-sm">1.2k</div>
+                            <div
+                              class="text-[10px] text-slate-500 uppercase tracking-tighter font-bold"
+                            >
+                              Followers
+                            </div>
+                          </div>
+                          <div class="text-center border-l border-white/5 pl-4">
+                            <div class="text-white font-bold text-sm">458</div>
+                            <div
+                              class="text-[10px] text-slate-500 uppercase tracking-tighter font-bold"
+                            >
+                              Following
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Quick Tools Popover -->
+                <div
+                  class="bg-dark-900/60 backdrop-blur-md rounded-2xl p-8 border border-white/5"
+                >
+                  <h3 class="text-white font-semibold mb-6">
+                    Grid Menu Popover
+                  </h3>
+                  <div x-data="{ open: false }" class="relative inline-block">
+                    <button
+                      @click="open = !open"
+                      class="w-12 h-12 bg-dark-800 hover:bg-dark-700 text-white rounded-2xl border border-white/5 flex items-center justify-center transition-all group"
+                    >
+                      <svg
+                        class="w-6 h-6 text-slate-400 group-hover:text-fuchsia-400 transition-colors"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
+                        />
+                      </svg>
+                    </button>
+
+                    <div
+                      x-show="open"
+                      @click.away="open = false"
+                      x-transition:enter="transition ease-out duration-200"
+                      x-transition:enter-start="opacity-0 translate-y-4"
+                      x-transition:enter-end="opacity-100 translate-y-0"
+                      class="absolute left-0 mt-4 w-64 z-50 bg-dark-900/90 backdrop-blur-xl border border-white/10 rounded-2xl p-4 shadow-2xl"
+                    >
+                      <div class="grid grid-cols-2 gap-3">
+                        <a
+                          href="#"
+                          class="p-3 bg-white/5 hover:bg-fuchsia-500/10 rounded-xl text-center group transition-all border border-white/5 hover:border-fuchsia-500/30"
+                        >
+                          <div
+                            class="w-10 h-10 bg-fuchsia-500/10 rounded-lg flex items-center justify-center mx-auto mb-2 text-fuchsia-400 group-hover:scale-110 transition-transform"
+                          >
+                            <svg
+                              class="w-5 h-5"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M12 10v6m0 0l-3-3m3 3l3-3m2-8H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V5a2 2 0 00-2-2z"
+                              />
+                            </svg>
+                          </div>
+                          <span class="text-xs font-semibold text-slate-300"
+                            >Export</span
+                          >
+                        </a>
+                        <a
+                          href="#"
+                          class="p-3 bg-white/5 hover:bg-cyan-500/10 rounded-xl text-center group transition-all border border-white/5 hover:border-cyan-500/30"
+                        >
+                          <div
+                            class="w-10 h-10 bg-cyan-500/10 rounded-lg flex items-center justify-center mx-auto mb-2 text-cyan-400 group-hover:scale-110 transition-transform"
+                          >
+                            <svg
+                              class="w-5 h-5"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+                              />
+                            </svg>
+                          </div>
+                          <span class="text-xs font-semibold text-slate-300"
+                            >Copy</span
+                          >
+                        </a>
+                        <a
+                          href="#"
+                          class="p-3 bg-white/5 hover:bg-emerald-500/10 rounded-xl text-center group transition-all border border-white/5 hover:border-emerald-500/30"
+                        >
+                          <div
+                            class="w-10 h-10 bg-emerald-500/10 rounded-lg flex items-center justify-center mx-auto mb-2 text-emerald-400 group-hover:scale-110 transition-transform"
+                          >
+                            <svg
+                              class="w-5 h-5"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
+                              />
+                            </svg>
+                          </div>
+                          <span class="text-xs font-semibold text-slate-300"
+                            >Upload</span
+                          >
+                        </a>
+                        <a
+                          href="#"
+                          class="p-3 bg-white/5 hover:bg-amber-500/10 rounded-xl text-center group transition-all border border-white/5 hover:border-amber-500/30"
+                        >
+                          <div
+                            class="w-10 h-10 bg-amber-500/10 rounded-lg flex items-center justify-center mx-auto mb-2 text-amber-400 group-hover:scale-110 transition-transform"
+                          >
+                            <svg
+                              class="w-5 h-5"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+                              />
+                            </svg>
+                          </div>
+                          <span class="text-xs font-semibold text-slate-300"
+                            >Settings</span
+                          >
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Vite Entry Point -->
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

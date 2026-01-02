@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <%- head %>
+    <title>Tabs & Accordions | Nexus Admin</title>
+  </head>
+  <body
+    class="bg-dark-950 text-slate-300 antialiased selection:bg-cyan-500/30 selection:text-cyan-200 overflow-hidden"
+    x-data="{ sidebarOpen: false }"
+  >
+    <!-- Background Decoration -->
+    <div class="fixed inset-0 z-0 pointer-events-none">
+      <div
+        class="absolute top-0 left-0 w-full h-96 bg-grid-pattern opacity-[0.05]"
+      ></div>
+      <div
+        class="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-purple-900/20 rounded-full blur-[128px]"
+      ></div>
+      <div
+        class="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-cyan-900/20 rounded-full blur-[128px]"
+      ></div>
+    </div>
+
+    <div class="relative z-10 flex h-screen overflow-hidden">
+      <!-- Sidebar -->
+      <%- sidebar %>
+
+      <!-- Main Content -->
+      <main class="flex-1 flex flex-col h-screen overflow-hidden relative">
+        <!-- Header -->
+        <%- header %>
+
+        <!-- Content -->
+        <div class="flex-1 overflow-y-auto p-8 relative scroll-smooth">
+          <!-- Page Title -->
+          <div class="mb-8">
+            <h1 class="text-3xl font-bold text-white mb-2">
+              Tabs & Accordions
+            </h1>
+            <p class="text-slate-400">
+              Interactive components for organizing content and maintaining
+              clean layouts.
+            </p>
+          </div>
+
+          <!-- Tabs Section -->
+          <div class="space-y-12">
+            <section>
+              <h2
+                class="text-xl font-semibold text-white mb-6 flex items-center"
+              >
+                <span
+                  class="w-8 h-8 bg-cyan-500/10 rounded-lg flex items-center justify-center mr-3 text-cyan-400"
+                >
+                  <svg
+                    class="w-5 h-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M4 6h16M4 12h16M4 18h7"
+                    />
+                  </svg>
+                </span>
+                Tab Variations
+              </h2>
+
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Underline Tabs -->
+                <div
+                  class="bg-dark-900/60 backdrop-blur-md rounded-2xl p-6 border border-white/5"
+                  x-data="{ activeTab: 'home' }"
+                >
+                  <h3
+                    class="text-sm font-medium text-slate-400 mb-6 uppercase tracking-wider"
+                  >
+                    Underline Style
+                  </h3>
+                  <div class="border-b border-white/5">
+                    <nav class="-mb-px flex space-x-8" aria-label="Tabs">
+                      <button
+                        @click="activeTab = 'home'"
+                        :class="activeTab === 'home' ? 'border-cyan-500 text-cyan-400' : 'border-transparent text-slate-500 hover:text-slate-300 hover:border-slate-300'"
+                        class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm transition-all duration-200"
+                      >
+                        Home
+                      </button>
+                      <button
+                        @click="activeTab = 'profile'"
+                        :class="activeTab === 'profile' ? 'border-cyan-500 text-cyan-400' : 'border-transparent text-slate-500 hover:text-slate-300 hover:border-slate-300'"
+                        class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm transition-all duration-200"
+                      >
+                        Profile
+                      </button>
+                      <button
+                        @click="activeTab = 'settings'"
+                        :class="activeTab === 'settings' ? 'border-cyan-500 text-cyan-400' : 'border-transparent text-slate-500 hover:text-slate-300 hover:border-slate-300'"
+                        class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm transition-all duration-200"
+                      >
+                        Settings
+                      </button>
+                    </nav>
+                  </div>
+                  <div class="mt-6">
+                    <div
+                      x-show="activeTab === 'home'"
+                      x-transition:enter="transition ease-out duration-300"
+                      x-transition:enter-start="opacity-0 translate-y-2"
+                      x-transition:enter-end="opacity-100 translate-y-0"
+                      class="text-slate-400"
+                    >
+                      Home content: Welcome to the Nexus dashboard overview.
+                      Monitor your system performance in real-time.
+                    </div>
+                    <div
+                      x-show="activeTab === 'profile'"
+                      x-transition:enter="transition ease-out duration-300"
+                      x-transition:enter-start="opacity-0 translate-y-2"
+                      x-transition:enter-end="opacity-100 translate-y-0"
+                      class="text-slate-400"
+                    >
+                      Profile content: Manage your account details, preferences
+                      and security settings here.
+                    </div>
+                    <div
+                      x-show="activeTab === 'settings'"
+                      x-transition:enter="transition ease-out duration-300"
+                      x-transition:enter-start="opacity-0 translate-y-2"
+                      x-transition:enter-end="opacity-100 translate-y-0"
+                      class="text-slate-400"
+                    >
+                      Settings content: Configure global notification
+                      preferences and API integrations.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Glass Pills -->
+                <div
+                  class="bg-dark-900/60 backdrop-blur-md rounded-2xl p-6 border border-white/5"
+                  x-data="{ activeTab: 'daily' }"
+                >
+                  <h3
+                    class="text-sm font-medium text-slate-400 mb-6 uppercase tracking-wider"
+                  >
+                    Glass Pills
+                  </h3>
+                  <div
+                    class="inline-flex p-1 bg-dark-800/50 rounded-xl border border-white/5"
+                  >
+                    <button
+                      @click="activeTab = 'daily'"
+                      :class="activeTab === 'daily' ? 'bg-fuchsia-500/20 text-fuchsia-400 border-fuchsia-500/30' : 'text-slate-400 border-transparent hover:text-slate-200'"
+                      class="px-4 py-2 text-sm font-medium rounded-lg transition-all border shadow-sm"
+                    >
+                      Daily
+                    </button>
+                    <button
+                      @click="activeTab = 'weekly'"
+                      :class="activeTab === 'weekly' ? 'bg-fuchsia-500/20 text-fuchsia-400 border-fuchsia-500/30' : 'text-slate-400 border-transparent hover:text-slate-200'"
+                      class="px-4 py-2 text-sm font-medium rounded-lg transition-all border shadow-sm"
+                    >
+                      Weekly
+                    </button>
+                    <button
+                      @click="activeTab = 'monthly'"
+                      :class="activeTab === 'monthly' ? 'bg-fuchsia-500/20 text-fuchsia-400 border-fuchsia-500/30' : 'text-slate-400 border-transparent hover:text-slate-200'"
+                      class="px-4 py-2 text-sm font-medium rounded-lg transition-all border shadow-sm"
+                    >
+                      Monthly
+                    </button>
+                  </div>
+                  <div class="mt-6">
+                    <div x-show="activeTab === 'daily'" class="text-slate-400">
+                      Viewing daily analytics for today's performance. Increased
+                      traffic by 12% compared to yesterday.
+                    </div>
+                    <div x-show="activeTab === 'weekly'" class="text-slate-400">
+                      Weekly overview shows a steady growth in user engagement
+                      and retention metrics.
+                    </div>
+                    <div
+                      x-show="activeTab === 'monthly'"
+                      class="text-slate-400"
+                    >
+                      Monthly report: Core KPIs have improved by 25% since the
+                      last system update.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Vertical Tabs -->
+                <div
+                  class="bg-dark-900/60 backdrop-blur-md rounded-2xl p-6 border border-white/5"
+                  x-data="{ activeTab: 'billing' }"
+                >
+                  <h3
+                    class="text-sm font-medium text-slate-400 mb-6 uppercase tracking-wider"
+                  >
+                    Vertical Layout
+                  </h3>
+                  <div class="flex flex-col md:flex-row gap-8">
+                    <div
+                      class="flex flex-col space-y-2 w-full md:w-48 shrink-0"
+                    >
+                      <button
+                        @click="activeTab = 'billing'"
+                        :class="activeTab === 'billing' ? 'bg-purple-500/10 text-purple-400 border-purple-500/30' : 'text-slate-500 border-transparent hover:bg-white/5'"
+                        class="flex items-center px-4 py-3 text-sm font-medium rounded-xl border transition-all text-left"
+                      >
+                        <svg
+                          class="w-4 h-4 mr-3"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
+                          />
+                        </svg>
+                        Billing
+                      </button>
+                      <button
+                        @click="activeTab = 'security'"
+                        :class="activeTab === 'security' ? 'bg-purple-500/10 text-purple-400 border-purple-500/30' : 'text-slate-500 border-transparent hover:bg-white/5'"
+                        class="flex items-center px-4 py-3 text-sm font-medium rounded-xl border transition-all text-left"
+                      >
+                        <svg
+                          class="w-4 h-4 mr-3"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                          />
+                        </svg>
+                        Security
+                      </button>
+                      <button
+                        @click="activeTab = 'notifications'"
+                        :class="activeTab === 'notifications' ? 'bg-purple-500/10 text-purple-400 border-purple-500/30' : 'text-slate-500 border-transparent hover:bg-white/5'"
+                        class="flex items-center px-4 py-3 text-sm font-medium rounded-xl border transition-all text-left"
+                      >
+                        <svg
+                          class="w-4 h-4 mr-3"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+                          />
+                        </svg>
+                        Notifications
+                      </button>
+                    </div>
+                    <div
+                      class="flex-1 bg-dark-800/30 rounded-2xl p-6 border border-white/5"
+                    >
+                      <div x-show="activeTab === 'billing'">
+                        <h4 class="text-white font-semibold mb-4 text-lg">
+                          Billing Details
+                        </h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                          Manage your subscriptions and payment methods. Your
+                          next billing cycle starts on Jan 15, 2024.
+                        </p>
+                      </div>
+                      <div x-show="activeTab === 'security'">
+                        <h4 class="text-white font-semibold mb-4 text-lg">
+                          Security Settings
+                        </h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                          Two-factor authentication is currently enabled. Change
+                          your password or review active login sessions.
+                        </p>
+                      </div>
+                      <div x-show="activeTab === 'notifications'">
+                        <h4 class="text-white font-semibold mb-4 text-lg">
+                          Email Preferences
+                        </h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                          Choose which system events you want to be notified
+                          about via email or push notifications.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Gradient Cards -->
+                <div
+                  class="bg-dark-900/60 backdrop-blur-md rounded-2xl p-6 border border-white/5"
+                  x-data="{ activeTab: 'apps' }"
+                >
+                  <h3
+                    class="text-sm font-medium text-slate-400 mb-6 uppercase tracking-wider"
+                  >
+                    Gradient Cards
+                  </h3>
+                  <div class="grid grid-cols-2 gap-4 mb-6">
+                    <button
+                      @click="activeTab = 'apps'"
+                      :class="activeTab === 'apps' ? 'bg-gradient-to-br from-cyan-500/20 to-blue-500/10 border-cyan-500/50 text-white shadow-[0_0_20px_rgba(6,182,212,0.2)]' : 'bg-dark-800/50 border-white/5 text-slate-500 hover:border-white/10'"
+                      class="flex flex-col items-center justify-center p-4 rounded-2xl border transition-all duration-300"
+                    >
+                      <svg
+                        class="w-6 h-6 mb-2"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
+                        />
+                      </svg>
+                      <span
+                        class="text-xs font-semibold uppercase tracking-widest"
+                        >Applications</span
+                      >
+                    </button>
+                    <button
+                      @click="activeTab = 'cloud'"
+                      :class="activeTab === 'cloud' ? 'bg-gradient-to-br from-fuchsia-500/20 to-purple-500/10 border-fuchsia-500/50 text-white shadow-[0_0_20px_rgba(217,70,239,0.2)]' : 'bg-dark-800/50 border-white/5 text-slate-500 hover:border-white/10'"
+                      class="flex flex-col items-center justify-center p-4 rounded-2xl border transition-all duration-300"
+                    >
+                      <svg
+                        class="w-6 h-6 mb-2"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
+                        />
+                      </svg>
+                      <span
+                        class="text-xs font-semibold uppercase tracking-widest"
+                        >Cloud Sync</span
+                      >
+                    </button>
+                  </div>
+                  <div
+                    class="p-4 bg-dark-800/50 rounded-xl border border-white/5 min-h-[100px] flex items-center justify-center text-center"
+                  >
+                    <div x-show="activeTab === 'apps'">
+                      <p class="text-slate-400">
+                        Total Apps: 12 Active • 2 Pending
+                      </p>
+                      <button
+                        class="mt-2 text-cyan-400 text-xs font-semibold hover:underline"
+                      >
+                        View All Apps →
+                      </button>
+                    </div>
+                    <div x-show="activeTab === 'cloud'">
+                      <p class="text-slate-400">
+                        Last Sync: 5 Minutes Ago • Status: Ideal
+                      </p>
+                      <button
+                        class="mt-2 text-fuchsia-400 text-xs font-semibold hover:underline"
+                      >
+                        Settings →
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Accordions Section -->
+            <section>
+              <h2
+                class="text-xl font-semibold text-white mb-6 flex items-center"
+              >
+                <span
+                  class="w-8 h-8 bg-fuchsia-500/10 rounded-lg flex items-center justify-center mr-3 text-fuchsia-400"
+                >
+                  <svg
+                    class="w-5 h-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </span>
+                Accordion Variations
+              </h2>
+
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Simple Bordered Accordion -->
+                <div
+                  class="bg-dark-900/60 backdrop-blur-md rounded-2xl p-6 border border-white/5"
+                  x-data="{ active: 1 }"
+                >
+                  <h3
+                    class="text-sm font-medium text-slate-400 mb-6 uppercase tracking-wider"
+                  >
+                    Bordered Style
+                  </h3>
+                  <div class="space-y-3">
+                    <div
+                      class="border border-white/5 rounded-xl overflow-hidden transition-all duration-300"
+                      :class="active === 1 ? 'border-fuchsia-500/30 bg-fuchsia-500/5' : ''"
+                    >
+                      <button
+                        @click="active = active === 1 ? null : 1"
+                        class="w-full flex items-center justify-between p-4 text-left"
+                      >
+                        <span
+                          class="font-medium"
+                          :class="active === 1 ? 'text-white' : 'text-slate-400'"
+                          >What is Nexus Admin?</span
+                        >
+                        <svg
+                          class="w-5 h-5 transition-transform duration-300"
+                          :class="active === 1 ? 'rotate-180 text-fuchsia-400' : 'text-slate-500'"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M19 9l-7 7-7-7"
+                          />
+                        </svg>
+                      </button>
+                      <div x-show="active === 1" x-collapse>
+                        <div
+                          class="px-4 pb-4 text-sm text-slate-500 leading-relaxed"
+                        >
+                          Nexus Admin is a high-performance, developer-friendly
+                          dashboard template designed for modern web
+                          applications. It features a unique dark neon aesthetic
+                          and is built with Tailwind CSS and Alpine.js.
+                        </div>
+                      </div>
+                    </div>
+
+                    <div
+                      class="border border-white/5 rounded-xl overflow-hidden transition-all duration-300"
+                      :class="active === 2 ? 'border-fuchsia-500/30 bg-fuchsia-500/5' : ''"
+                    >
+                      <button
+                        @click="active = active === 2 ? null : 2"
+                        class="w-full flex items-center justify-between p-4 text-left"
+                      >
+                        <span
+                          class="font-medium"
+                          :class="active === 2 ? 'text-white' : 'text-slate-400'"
+                          >How do I install it?</span
+                        >
+                        <svg
+                          class="w-5 h-5 transition-transform duration-300"
+                          :class="active === 2 ? 'rotate-180 text-fuchsia-400' : 'text-slate-500'"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M19 9l-7 7-7-7"
+                          />
+                        </svg>
+                      </button>
+                      <div x-show="active === 2" x-collapse>
+                        <div
+                          class="px-4 pb-4 text-sm text-slate-500 leading-relaxed"
+                        >
+                          Simply clone the repository, run
+                          <code
+                            class="bg-dark-800 px-1 rounded text-fuchsia-300"
+                            >npm install</code
+                          >, and then
+                          <code class="bg-dark-800 px-1 rounded text-cyan-300"
+                            >npm run dev</code
+                          >
+                          to start the development server.
+                        </div>
+                      </div>
+                    </div>
+
+                    <div
+                      class="border border-white/5 rounded-xl overflow-hidden transition-all duration-300"
+                      :class="active === 3 ? 'border-fuchsia-500/30 bg-fuchsia-500/5' : ''"
+                    >
+                      <button
+                        @click="active = active === 3 ? null : 3"
+                        class="w-full flex items-center justify-between p-4 text-left"
+                      >
+                        <span
+                          class="font-medium"
+                          :class="active === 3 ? 'text-white' : 'text-slate-400'"
+                          >Is it mobile responsive?</span
+                        >
+                        <svg
+                          class="w-5 h-5 transition-transform duration-300"
+                          :class="active === 3 ? 'rotate-180 text-fuchsia-400' : 'text-slate-500'"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M19 9l-7 7-7-7"
+                          />
+                        </svg>
+                      </button>
+                      <div x-show="active === 3" x-collapse>
+                        <div
+                          class="px-4 pb-4 text-sm text-slate-500 leading-relaxed"
+                        >
+                          Yes! Nexus is built with a mobile-first approach.
+                          Every component is optimized for mobile, tablet, and
+                          desktop screens with fluid layouts.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Flush/Minimal Accordion -->
+                <div
+                  class="bg-dark-900/60 backdrop-blur-md rounded-2xl p-6 border border-white/5"
+                  x-data="{ expanded: null }"
+                >
+                  <h3
+                    class="text-sm font-medium text-slate-400 mb-6 uppercase tracking-wider"
+                  >
+                    Flush Style
+                  </h3>
+                  <div class="divide-y divide-white/5">
+                    <div class="py-4">
+                      <button
+                        @click="expanded = expanded === 'q1' ? null : 'q1'"
+                        class="w-full flex items-center space-x-4 text-left"
+                      >
+                        <div
+                          class="w-8 h-8 rounded-full bg-cyan-500/10 flex items-center justify-center shrink-0"
+                        >
+                          <div
+                            class="w-1.5 h-1.5 rounded-full"
+                            :class="expanded === 'q1' ? 'bg-cyan-400 shadow-[0_0_8px_rgba(6,182,212,0.8)]' : 'bg-slate-700'"
+                          ></div>
+                        </div>
+                        <span
+                          class="flex-1 font-medium transition-colors"
+                          :class="expanded === 'q1' ? 'text-white' : 'text-slate-400'"
+                          >Performance Optimization</span
+                        >
+                        <svg
+                          class="w-4 h-4 transition-transform duration-200"
+                          :class="expanded === 'q1' ? 'rotate-45 text-cyan-400' : 'text-slate-600'"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M12 4v16m8-8H4"
+                          />
+                        </svg>
+                      </button>
+                      <div x-show="expanded === 'q1'" x-collapse>
+                        <div
+                          class="pl-12 pr-4 pt-4 text-sm text-slate-500 leading-relaxed"
+                        >
+                          We use code splitting and lazy loading to ensure the
+                          dashboard remains fast even as your data grows.
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="py-4">
+                      <button
+                        @click="expanded = expanded === 'q2' ? null : 'q2'"
+                        class="w-full flex items-center space-x-4 text-left"
+                      >
+                        <div
+                          class="w-8 h-8 rounded-full bg-cyan-500/10 flex items-center justify-center shrink-0"
+                        >
+                          <div
+                            class="w-1.5 h-1.5 rounded-full"
+                            :class="expanded === 'q2' ? 'bg-cyan-400 shadow-[0_0_8px_rgba(6,182,212,0.8)]' : 'bg-slate-700'"
+                          ></div>
+                        </div>
+                        <span
+                          class="flex-1 font-medium transition-colors"
+                          :class="expanded === 'q2' ? 'text-white' : 'text-slate-400'"
+                          >API Integration</span
+                        >
+                        <svg
+                          class="w-4 h-4 transition-transform duration-200"
+                          :class="expanded === 'q2' ? 'rotate-45 text-cyan-400' : 'text-slate-600'"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M12 4v16m8-8H4"
+                          />
+                        </svg>
+                      </button>
+                      <div x-show="expanded === 'q2'" x-collapse>
+                        <div
+                          class="pl-12 pr-4 pt-4 text-sm text-slate-500 leading-relaxed"
+                        >
+                          Nexus comes with pre-configured Axios hooks and Fetch
+                          utilities for easy integration with any REST or
+                          GraphQL API.
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="py-4">
+                      <button
+                        @click="expanded = expanded === 'q3' ? null : 'q3'"
+                        class="w-full flex items-center space-x-4 text-left"
+                      >
+                        <div
+                          class="w-8 h-8 rounded-full bg-cyan-500/10 flex items-center justify-center shrink-0"
+                        >
+                          <div
+                            class="w-1.5 h-1.5 rounded-full"
+                            :class="expanded === 'q3' ? 'bg-cyan-400 shadow-[0_0_8px_rgba(6,182,212,0.8)]' : 'bg-slate-700'"
+                          ></div>
+                        </div>
+                        <span
+                          class="flex-1 font-medium transition-colors"
+                          :class="expanded === 'q3' ? 'text-white' : 'text-slate-400'"
+                          >Custom Theme Support</span
+                        >
+                        <svg
+                          class="w-4 h-4 transition-transform duration-200"
+                          :class="expanded === 'q3' ? 'rotate-45 text-cyan-400' : 'text-slate-600'"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M12 4v16m8-8H4"
+                          />
+                        </svg>
+                      </button>
+                      <div x-show="expanded === 'q3'" x-collapse>
+                        <div
+                          class="pl-12 pr-4 pt-4 text-sm text-slate-500 leading-relaxed"
+                        >
+                          Easily change the primary accent colors through
+                          Tailwind's configuration file to match your brand
+                          identity.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                
+              </div>
+            </section>
+          </div>
+
+          <!-- Footer Info -->
+          
+        </div>
+      </main>
+    </div>
+
+    <!-- Vite Entry Point -->
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <%- head %>
+    <title>Pagination | Nexus Admin</title>
+  </head>
+  <body
+    class="bg-dark-950 text-slate-300 antialiased selection:bg-cyan-500/30 selection:text-cyan-200 overflow-hidden"
+    x-data="{ sidebarOpen: false }"
+  >
+    <!-- Background Decoration -->
+    <div class="fixed inset-0 z-0 pointer-events-none">
+      <div
+        class="absolute top-0 left-0 w-full h-96 bg-grid-pattern opacity-[0.05]"
+      ></div>
+      <div
+        class="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-purple-900/20 rounded-full blur-[128px]"
+      ></div>
+      <div
+        class="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-cyan-900/20 rounded-full blur-[128px]"
+      ></div>
+    </div>
+
+    <div class="relative z-10 flex h-screen overflow-hidden">
+      <!-- Sidebar -->
+      <%- sidebar %>
+
+      <!-- Main Content -->
+      <main class="flex-1 flex flex-col h-screen overflow-hidden relative">
+        <!-- Header -->
+        <%- header %>
+
+        <!-- Content -->
+        <div class="flex-1 overflow-y-auto p-8 relative scroll-smooth">
+          <!-- Page Title -->
+          <div class="mb-8">
+            <h1 class="text-3xl font-bold text-white mb-2">Pagination</h1>
+            <p class="text-slate-400">
+              Various pagination styles for navigating through multi-page
+              content.
+            </p>
+          </div>
+
+          <!-- Pagination Section -->
+          <div class="space-y-12">
+            <section>
+              <h2
+                class="text-xl font-semibold text-white mb-6 flex items-center"
+              >
+                <span
+                  class="w-8 h-8 bg-cyan-500/10 rounded-lg flex items-center justify-center mr-3 text-cyan-400"
+                >
+                  <svg
+                    class="w-5 h-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M7 16l-4-4m0 0l4-4m-4 4h18"
+                    />
+                  </svg>
+                </span>
+                Pagination Styles
+              </h2>
+
+              <div class="grid grid-cols-1 gap-8">
+                <!-- Standard Pagination -->
+                <div
+                  class="bg-dark-900/60 backdrop-blur-md rounded-2xl p-6 border border-white/5"
+                >
+                  <h3
+                    class="text-sm font-medium text-slate-400 mb-8 uppercase tracking-wider"
+                  >
+                    Standard Style
+                  </h3>
+                  <div class="flex items-center justify-center space-x-2">
+                    <button
+                      class="flex items-center justify-center w-10 h-10 rounded-xl bg-dark-800 border border-white/5 text-slate-400 hover:bg-white/5 hover:text-white transition-all"
+                    >
+                      <svg
+                        class="w-5 h-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M15 19l-7-7 7-7"
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-medium shadow-[0_0_15px_rgba(6,182,212,0.1)]"
+                    >
+                      1
+                    </button>
+                    <button
+                      class="w-10 h-10 rounded-xl bg-dark-800 border border-white/5 text-slate-400 hover:bg-white/5 hover:text-white transition-all font-medium"
+                    >
+                      2
+                    </button>
+                    <button
+                      class="w-10 h-10 rounded-xl bg-dark-800 border border-white/5 text-slate-400 hover:bg-white/5 hover:text-white transition-all font-medium"
+                    >
+                      3
+                    </button>
+                    <span class="text-slate-600 px-2 font-bold">...</span>
+                    <button
+                      class="w-10 h-10 rounded-xl bg-dark-800 border border-white/5 text-slate-400 hover:bg-white/5 hover:text-white transition-all font-medium"
+                    >
+                      12
+                    </button>
+                    <button
+                      class="flex items-center justify-center w-10 h-10 rounded-xl bg-dark-800 border border-white/5 text-slate-400 hover:bg-white/5 hover:text-white transition-all"
+                    >
+                      <svg
+                        class="w-5 h-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Glass Minimal Pagination -->
+                <div
+                  class="bg-dark-900/60 backdrop-blur-md rounded-2xl p-6 border border-white/5"
+                >
+                  <h3
+                    class="text-sm font-medium text-slate-400 mb-8 uppercase tracking-wider"
+                  >
+                    Glass Minimal
+                  </h3>
+                  <div class="flex items-center justify-between">
+                    <span class="text-sm text-slate-500">
+                      Showing <span class="text-white font-medium">1</span> to
+                      <span class="text-white font-medium">10</span> of
+                      <span class="text-white font-medium">124</span> results
+                    </span>
+                    <div class="flex items-center space-x-1">
+                      <button
+                        class="px-4 py-2 rounded-lg bg-dark-800/50 border border-white/5 text-slate-400 text-sm font-medium hover:bg-white/5 hover:text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                        disabled
+                      >
+                        Previous
+                      </button>
+                      <button
+                        class="px-4 py-2 rounded-lg bg-dark-800/50 border border-white/5 text-slate-400 text-sm font-medium hover:bg-white/5 hover:text-white transition-all active:bg-cyan-500/20 active:text-cyan-400"
+                      >
+                        Next
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                  <!-- Circular Pagination -->
+                  <div
+                    class="bg-dark-900/60 backdrop-blur-md rounded-2xl p-6 border border-white/5"
+                  >
+                    <h3
+                      class="text-sm font-medium text-slate-400 mb-8 uppercase tracking-wider"
+                    >
+                      Circular Style
+                    </h3>
+                    <div
+                      class="flex flex-wrap items-center justify-center gap-3"
+                    >
+                      <button
+                        class="w-10 h-10 rounded-full flex items-center justify-center bg-fuchsia-500/10 text-fuchsia-400 border border-fuchsia-500/20 hover:bg-fuchsia-500/20 transition-all shadow-[0_0_15px_rgba(217,70,239,0.1)]"
+                      >
+                        <svg
+                          class="w-5 h-5"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M15 19l-7-7 7-7"
+                          />
+                        </svg>
+                      </button>
+                      <button
+                        class="w-10 h-10 rounded-full bg-white/5 border border-white/10 text-slate-400 font-medium hover:bg-white/10 hover:text-white transition-all"
+                      >
+                        1
+                      </button>
+                      <button
+                        class="w-10 h-10 rounded-full bg-fuchsia-500 text-white font-bold shadow-[0_0_20px_rgba(217,70,239,0.4)]"
+                      >
+                        2
+                      </button>
+                      <button
+                        class="w-10 h-10 rounded-full bg-white/5 border border-white/10 text-slate-400 font-medium hover:bg-white/10 hover:text-white transition-all"
+                      >
+                        3
+                      </button>
+                      <button
+                        class="w-10 h-10 rounded-full flex items-center justify-center bg-fuchsia-500/10 text-fuchsia-400 border border-fuchsia-500/20 hover:bg-fuchsia-500/20 transition-all shadow-[0_0_15px_rgba(217,70,239,0.1)]"
+                      >
+                        <svg
+                          class="w-5 h-5"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M9 5l7 7-7 7"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Neon Dots Pagination -->
+                  <div
+                    class="bg-dark-900/60 backdrop-blur-md rounded-2xl p-6 border border-white/5"
+                    x-data="{ active: 2 }"
+                  >
+                    <h3
+                      class="text-sm font-medium text-slate-400 mb-8 uppercase tracking-wider"
+                    >
+                      Neon Dots (Carousel style)
+                    </h3>
+                    <div
+                      class="flex flex-col items-center justify-center space-y-4"
+                    >
+                      <div class="flex items-center space-x-3">
+                        <template x-for="i in 5">
+                          <button
+                            @click="active = i"
+                            class="h-2 rounded-full transition-all duration-300"
+                            :class="active === i ? 'w-8 bg-cyan-400 shadow-[0_0_12px_rgba(6,182,212,0.8)]' : 'w-2 bg-slate-700 hover:bg-slate-600'"
+                          ></button>
+                        </template>
+                      </div>
+                      <p class="text-xs text-slate-500">
+                        Click dots to switch (Simulated)
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Modern Segmented Control -->
+                <div
+                  class="bg-dark-900/60 backdrop-blur-md rounded-2xl p-6 border border-white/5"
+                >
+                  <h3
+                    class="text-sm font-medium text-slate-400 mb-8 uppercase tracking-wider"
+                  >
+                    Segmented Style
+                  </h3>
+                  <div class="flex justify-center">
+                    <nav
+                      class="relative z-0 inline-flex rounded-xl shadow-sm bg-dark-800/50 border border-white/5 p-1"
+                    >
+                      <button
+                        class="relative inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5 transition-all"
+                      >
+                        First
+                      </button>
+                      <button
+                        class="relative inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5 transition-all"
+                      >
+                        <svg
+                          class="h-5 w-5"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M15 19l-7-7 7-7"
+                          />
+                        </svg>
+                      </button>
+                      <button
+                        class="relative inline-flex items-center px-5 py-2 rounded-lg text-sm font-medium bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 z-10 shadow-[0_0_15px_rgba(6,182,212,0.1)]"
+                      >
+                        4
+                      </button>
+                      <button
+                        class="relative inline-flex items-center px-5 py-2 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5 transition-all"
+                      >
+                        5
+                      </button>
+                      <button
+                        class="relative inline-flex items-center px-5 py-2 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5 transition-all"
+                      >
+                        6
+                      </button>
+                      <button
+                        class="relative inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5 transition-all"
+                      >
+                        <svg
+                          class="h-5 w-5"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M9 5l7 7-7 7"
+                          />
+                        </svg>
+                      </button>
+                      <button
+                        class="relative inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-white/5 transition-all"
+                      >
+                        Last
+                      </button>
+                    </nav>
+                  </div>
+                </div>
+
+                <!-- Load More Variation -->
+                <div
+                  class="bg-dark-900/60 backdrop-blur-md rounded-2xl p-6 border border-white/5"
+                >
+                  <h3
+                    class="text-sm font-medium text-slate-400 mb-8 uppercase tracking-wider"
+                  >
+                    Load More Interface
+                  </h3>
+                  <div class="flex flex-col items-center space-y-6">
+                    <div class="w-full max-w-md space-y-3">
+                      <div
+                        class="h-12 w-full bg-white/5 rounded-xl border border-white/5 animate-pulse"
+                      ></div>
+                      <div
+                        class="h-12 w-full bg-white/5 rounded-xl border border-white/5 animate-pulse opacity-60"
+                      ></div>
+                      <div
+                        class="h-12 w-full bg-white/5 rounded-xl border border-white/5 animate-pulse opacity-30"
+                      ></div>
+                    </div>
+                    <button
+                      class="group relative px-8 py-3 bg-dark-800 rounded-xl border border-white/10 text-white font-medium hover:border-cyan-500/50 transition-all duration-300 overflow-hidden"
+                    >
+                      <div
+                        class="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity"
+                      ></div>
+                      <span class="relative z-10 flex items-center">
+                        <svg
+                          class="w-5 h-5 mr-2 text-cyan-400 group-hover:rotate-180 transition-transform duration-500"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                          />
+                        </svg>
+                        Load More Content
+                      </span>
+                    </button>
+                    <p class="text-xs text-slate-500">
+                      Showing 24 of 128 items
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- Footer Info -->
+          <div
+            class="mt-12 pt-8 border-t border-white/5 text-center text-slate-500 text-sm"
+          >
+            &copy; 2024 Nexus Admin Dashboard. Premium UI components.
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Vite Entry Point -->
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <%- head %>
+    <title>Nexus Admin | Button Groups</title>
+    <style>
+      .btn-group-shadow {
+        box-shadow: 0 0 20px rgba(6, 182, 212, 0.1);
+      }
+      .btn-glow-cyan:hover {
+        box-shadow: 0 0 15px rgba(6, 182, 212, 0.5);
+      }
+      .btn-glow-fuchsia:hover {
+        box-shadow: 0 0 15px rgba(217, 70, 239, 0.5);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-dark-950 text-slate-300 antialiased selection:bg-cyan-500/30 selection:text-cyan-200 overflow-hidden"
+    x-data="{ sidebarOpen: false }"
+  >
+    <!-- Background Decoration -->
+    <div class="fixed inset-0 z-0 pointer-events-none">
+      <div
+        class="absolute top-0 left-0 w-full h-96 bg-grid-pattern opacity-[0.05]"
+      ></div>
+      <div
+        class="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-purple-900/20 rounded-full blur-[128px]"
+      ></div>
+      <div
+        class="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-cyan-900/20 rounded-full blur-[128px]"
+      ></div>
+    </div>
+
+    <div class="relative z-10 flex h-screen overflow-hidden">
+      <!-- Sidebar -->
+      <%- sidebar %>
+
+      <!-- Main Content -->
+      <main class="flex-1 flex flex-col h-screen overflow-hidden relative">
+        <!-- Header -->
+        <%- header %>
+
+        <!-- Scrollable Content -->
+        <div class="flex-1 overflow-y-auto p-8 relative scroll-smooth pb-20">
+          <div class="mb-10 text-center max-w-2xl mx-auto">
+            <h1
+              class="text-4xl font-bold text-white mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400"
+            >
+              Button Groups
+            </h1>
+            <p class="text-slate-400">
+              Coordinated button clusters for navigation, filtering, and
+              multi-step actions in the Neon Dark theme.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto">
+            <!-- 1. Basic Button Group -->
+            <div
+              class="bg-dark-900/60 backdrop-blur-md rounded-2xl border border-white/5 p-8 border-l-4 border-l-cyan-500 group hover:border-r hover:border-t hover:border-b hover:border-white/10 transition-all"
+            >
+              <h3 class="text-lg font-semibold text-white mb-6">Basic Group</h3>
+              <div
+                class="inline-flex rounded-xl shadow-sm btn-group-shadow p-1 bg-white/5 border border-white/10"
+              >
+                <button
+                  class="px-5 py-2.5 text-sm font-medium text-white bg-cyan-600 rounded-lg hover:bg-cyan-500 transition-colors"
+                >
+                  Left
+                </button>
+                <button
+                  class="px-5 py-2.5 text-sm font-medium text-slate-300 hover:text-white transition-colors"
+                >
+                  Middle
+                </button>
+                <button
+                  class="px-5 py-2.5 text-sm font-medium text-slate-300 hover:text-white transition-colors"
+                >
+                  Right
+                </button>
+              </div>
+            </div>
+
+            <!-- 2. Outline Button Group -->
+            <div
+              class="bg-dark-900/60 backdrop-blur-md rounded-2xl border border-white/5 p-8 border-l-4 border-l-fuchsia-500 group hover:border-r hover:border-t hover:border-b hover:border-white/10 transition-all"
+            >
+              <h3 class="text-lg font-semibold text-white mb-6">
+                Outline Group
+              </h3>
+              <div
+                class="inline-flex rounded-xl shadow-sm overflow-hidden border border-white/10"
+              >
+                <button
+                  class="px-5 py-2.5 text-sm font-medium text-slate-300 bg-transparent border-r border-white/10 hover:bg-white/5 hover:text-white transition-colors"
+                >
+                  Daily
+                </button>
+                <button
+                  class="px-5 py-2.5 text-sm font-medium text-white bg-fuchsia-600/20 border-r border-white/10 hover:bg-fuchsia-600/30 transition-colors"
+                >
+                  Weekly
+                </button>
+                <button
+                  class="px-5 py-2.5 text-sm font-medium text-slate-300 bg-transparent hover:bg-white/5 hover:text-white transition-colors"
+                >
+                  Monthly
+                </button>
+              </div>
+            </div>
+
+            <!-- 3. Icon Button Group -->
+            <div
+              class="bg-dark-900/60 backdrop-blur-md rounded-2xl border border-white/5 p-8 group hover:border-cyan-500/30 transition-all"
+            >
+              <h3 class="text-lg font-semibold text-white mb-6">Icon Group</h3>
+              <div
+                class="inline-flex rounded-lg shadow-sm border border-white/10 bg-dark-800"
+              >
+                <button
+                  class="p-2.5 text-slate-400 hover:text-cyan-400 border-r border-white/10 transition-all hover:bg-white/5"
+                >
+                  <svg
+                    class="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                    />
+                  </svg>
+                </button>
+                <button
+                  class="p-2.5 text-slate-400 hover:text-cyan-400 border-r border-white/10 transition-all hover:bg-white/5"
+                >
+                  <svg
+                    class="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                    />
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                    />
+                  </svg>
+                </button>
+                <button
+                  class="p-2.5 text-slate-400 hover:text-rose-400 transition-all hover:bg-white/5"
+                >
+                  <svg
+                    class="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-4v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- 4. Vertical Button Group -->
+            <div
+              class="bg-dark-900/60 backdrop-blur-md rounded-2xl border border-white/5 p-8 group hover:border-purple-500/30 transition-all"
+            >
+              <h3 class="text-lg font-semibold text-white mb-6">
+                Vertical Group
+              </h3>
+              <div
+                class="inline-flex flex-col rounded-xl shadow-sm border border-white/10 bg-dark-800 w-full sm:w-48"
+              >
+                <button
+                  class="px-4 py-3 text-sm font-medium text-white border-b border-white/10 hover:bg-white/5 transition-colors text-left flex items-center"
+                >
+                  <span class="w-2 h-2 rounded-full bg-cyan-500 mr-3"></span>
+                  Profile Settings
+                </button>
+                <button
+                  class="px-4 py-3 text-sm font-medium text-slate-300 border-b border-white/10 hover:bg-white/5 transition-colors text-left flex items-center"
+                >
+                  <span class="w-2 h-2 rounded-full bg-fuchsia-500 mr-3"></span>
+                  Security Keys
+                </button>
+                <button
+                  class="px-4 py-3 text-sm font-medium text-slate-300 hover:bg-white/5 transition-colors text-left flex items-center"
+                >
+                  <span class="w-2 h-2 rounded-full bg-emerald-500 mr-3"></span>
+                  Notifications
+                </button>
+              </div>
+            </div>
+
+            <!-- 5. Neon Toggle Group -->
+            <div
+              class="bg-dark-900/60 backdrop-blur-md rounded-2xl border border-white/5 p-8 md:col-span-2 group hover:border-emerald-500/30 transition-all"
+            >
+              <h3 class="text-lg font-semibold text-white mb-6">
+                Neon Toggle Selection
+              </h3>
+              <div class="flex flex-wrap gap-6 items-center">
+                <div
+                  class="flex p-1 bg-dark-800 rounded-2xl border border-white/5 shadow-inner"
+                >
+                  <button
+                    class="px-6 py-2 rounded-xl text-sm font-bold transition-all duration-300 bg-cyan-600 text-white shadow-[0_0_15px_rgba(6,182,212,0.4)]"
+                  >
+                    Active
+                  </button>
+                  <button
+                    class="px-6 py-2 rounded-xl text-sm font-medium text-slate-500 hover:text-slate-300 transition-all duration-300"
+                  >
+                    Pending
+                  </button>
+                  <button
+                    class="px-6 py-2 rounded-xl text-sm font-medium text-slate-500 hover:text-slate-300 transition-all duration-300"
+                  >
+                    Completed
+                  </button>
+                </div>
+
+                <div
+                  class="flex p-1 bg-dark-800 rounded-2xl border border-white/5"
+                >
+                  <button
+                    class="px-6 py-2 rounded-xl text-sm font-medium text-slate-500 hover:text-slate-300 transition-all duration-300"
+                  >
+                    Map
+                  </button>
+                  <button
+                    class="px-6 py-2 rounded-xl text-sm font-bold transition-all duration-300 bg-fuchsia-600 text-white shadow-[0_0_15px_rgba(217,70,239,0.4)]"
+                  >
+                    Satellite
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 6. Mixed Actions Group -->
+            <div
+              class="bg-dark-900/60 backdrop-blur-md rounded-2xl border border-white/5 p-8 group hover:border-orange-500/30 transition-all"
+            >
+              <h3 class="text-lg font-semibold text-white mb-6">
+                Mixed Actions
+              </h3>
+              <div
+                class="flex items-center space-x-0 rounded-xl overflow-hidden shadow-2xl"
+              >
+                <button
+                  class="flex-1 px-4 py-3 bg-cyan-600 hover:bg-cyan-500 text-white font-bold flex items-center justify-center space-x-2 transition-colors"
+                >
+                  <svg
+                    class="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <span>Approve</span>
+                </button>
+                <div class="w-px h-12 bg-white/10"></div>
+                <button
+                  class="px-4 py-3 bg-dark-800 hover:bg-rose-600/20 text-slate-400 hover:text-rose-400 transition-all duration-300"
+                >
+                  <svg
+                    class="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- 7. Breadcrumb Style Group -->
+            <div
+              class="bg-dark-900/60 backdrop-blur-md rounded-2xl border border-white/5 p-8 group hover:border-blue-500/30 transition-all"
+            >
+              <h3 class="text-lg font-semibold text-white mb-6">
+                Step Progression
+              </h3>
+              <div class="flex items-center">
+                <button
+                  class="px-4 py-2 bg-cyan-600 text-white rounded-l-xl text-sm font-medium relative z-30"
+                >
+                  Shipping
+                </button>
+                <div
+                  class="w-4 h-9 bg-cyan-600 relative -ml-2 skew-x-[20deg] z-20 border-r border-white/20"
+                ></div>
+                <button
+                  class="px-6 py-2 bg-dark-800 text-slate-400 text-sm font-medium relative z-10 -ml-2 border-y border-white/10"
+                >
+                  Payment
+                </button>
+                <div
+                  class="w-4 h-9 bg-dark-800 relative -ml-2 skew-x-[20deg] z-5 border-r border-white/10 border-y"
+                ></div>
+                <button
+                  class="px-6 py-2 bg-dark-900/40 text-slate-600 text-sm font-medium rounded-r-xl -ml-2 border border-white/5 cursor-not-allowed"
+                >
+                  Confirm
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Vite Entry Point -->
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
