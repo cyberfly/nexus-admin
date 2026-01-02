@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <%- head %>
+    <title>About | Nexus Admin</title>
+  </head>
+  <body
+    class="bg-dark-950 text-slate-300 antialiased selection:bg-cyan-500/30 selection:text-cyan-200 overflow-hidden"
+    x-data="{ sidebarOpen: false }"
+  >
+    <!-- Background Decoration -->
+    <div class="fixed inset-0 z-0 pointer-events-none">
+      <div
+        class="absolute top-0 left-0 w-full h-96 bg-grid-pattern opacity-[0.05]"
+      ></div>
+      <div
+        class="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-purple-900/20 rounded-full blur-[128px]"
+      ></div>
+      <div
+        class="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-cyan-900/20 rounded-full blur-[128px]"
+      ></div>
+    </div>
+
+    <div class="relative z-10 flex h-screen overflow-hidden">
+      <!-- Sidebar -->
+      <%- sidebar %>
+
+      <!-- Main Content -->
+      <main class="flex-1 flex flex-col h-screen overflow-hidden relative">
+        <!-- Header -->
+        <%- header %>
+
+        <!-- About Content -->
+        <div class="flex-1 overflow-y-auto p-8 relative scroll-smooth">
+          <!-- Page Title -->
+          <div class="mb-8">
+            <h1 class="text-3xl font-bold text-white mb-2">About</h1>
+            <p class="text-slate-400">
+              Learn more about Nexus Admin Dashboard.
+            </p>
+          </div>
+
+          <!-- About Section -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- About Card -->
+            <div
+              class="bg-dark-900/60 backdrop-blur-md rounded-2xl p-8 border border-white/5 hover:border-cyan-500/30 transition-all duration-300"
+            >
+              <div class="flex items-center space-x-4 mb-6">
+                <div
+                  class="p-3 bg-cyan-500/10 rounded-xl text-cyan-400 shadow-[0_0_15px_rgba(6,182,212,0.2)]"
+                >
+                  <svg
+                    class="w-8 h-8"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                    />
+                  </svg>
+                </div>
+                <h2 class="text-xl font-semibold text-white">Our Mission</h2>
+              </div>
+              <p class="text-slate-400 leading-relaxed">
+                Nexus Admin is a premium, cyberpunk-inspired admin dashboard
+                designed to provide developers and businesses with a
+                cutting-edge interface for managing their applications. Built
+                with modern technologies and a focus on user experience, we
+                deliver beautiful and functional admin solutions.
+              </p>
+            </div>
+
+            <!-- Features Card -->
+            <div
+              class="bg-dark-900/60 backdrop-blur-md rounded-2xl p-8 border border-white/5 hover:border-fuchsia-500/30 transition-all duration-300"
+            >
+              <div class="flex items-center space-x-4 mb-6">
+                <div
+                  class="p-3 bg-fuchsia-500/10 rounded-xl text-fuchsia-400 shadow-[0_0_15px_rgba(217,70,239,0.2)]"
+                >
+                  <svg
+                    class="w-8 h-8"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
+                    />
+                  </svg>
+                </div>
+                <h2 class="text-xl font-semibold text-white">Key Features</h2>
+              </div>
+              <ul class="space-y-3">
+                <li class="flex items-center text-slate-400">
+                  <span
+                    class="w-2 h-2 bg-cyan-400 rounded-full mr-3 shadow-[0_0_8px_rgba(6,182,212,0.5)]"
+                  ></span>
+                  Dark mode with neon accents
+                </li>
+                <li class="flex items-center text-slate-400">
+                  <span
+                    class="w-2 h-2 bg-fuchsia-400 rounded-full mr-3 shadow-[0_0_8px_rgba(217,70,239,0.5)]"
+                  ></span>
+                  Fully responsive design
+                </li>
+                <li class="flex items-center text-slate-400">
+                  <span
+                    class="w-2 h-2 bg-purple-400 rounded-full mr-3 shadow-[0_0_8px_rgba(168,85,247,0.5)]"
+                  ></span>
+                  Interactive components with Alpine.js
+                </li>
+                <li class="flex items-center text-slate-400">
+                  <span
+                    class="w-2 h-2 bg-emerald-400 rounded-full mr-3 shadow-[0_0_8px_rgba(52,211,153,0.5)]"
+                  ></span>
+                  TailwindCSS styling system
+                </li>
+              </ul>
+            </div>
+
+            <!-- Tech Stack Card -->
+            <div
+              class="lg:col-span-2 bg-dark-900/60 backdrop-blur-md rounded-2xl p-8 border border-white/5 hover:border-purple-500/30 transition-all duration-300"
+            >
+              <div class="flex items-center space-x-4 mb-6">
+                <div
+                  class="p-3 bg-purple-500/10 rounded-xl text-purple-400 shadow-[0_0_15px_rgba(168,85,247,0.2)]"
+                >
+                  <svg
+                    class="w-8 h-8"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                    />
+                  </svg>
+                </div>
+                <h2 class="text-xl font-semibold text-white">
+                  Technology Stack
+                </h2>
+              </div>
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div
+                  class="bg-dark-800/50 rounded-xl p-4 text-center border border-white/5 hover:border-cyan-500/20 transition-colors"
+                >
+                  <div class="text-2xl mb-2">⚡</div>
+                  <p class="text-white font-medium">Vite</p>
+                  <p class="text-slate-500 text-xs">Build Tool</p>
+                </div>
+                <div
+                  class="bg-dark-800/50 rounded-xl p-4 text-center border border-white/5 hover:border-cyan-500/20 transition-colors"
+                >
+                  <div class="text-2xl mb-2">🎨</div>
+                  <p class="text-white font-medium">TailwindCSS</p>
+                  <p class="text-slate-500 text-xs">Styling</p>
+                </div>
+                <div
+                  class="bg-dark-800/50 rounded-xl p-4 text-center border border-white/5 hover:border-cyan-500/20 transition-colors"
+                >
+                  <div class="text-2xl mb-2">🏔️</div>
+                  <p class="text-white font-medium">Alpine.js</p>
+                  <p class="text-slate-500 text-xs">Interactivity</p>
+                </div>
+                <div
+                  class="bg-dark-800/50 rounded-xl p-4 text-center border border-white/5 hover:border-cyan-500/20 transition-colors"
+                >
+                  <div class="text-2xl mb-2">📄</div>
+                  <p class="text-white font-medium">EJS</p>
+                  <p class="text-slate-500 text-xs">Templating</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Version Info -->
+          <div class="mt-8 text-center text-slate-500 text-sm">
+            <p>Nexus Admin Dashboard v1.0.0</p>
+            <p class="mt-1">© 2024 All rights reserved.</p>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Vite Entry Point -->
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

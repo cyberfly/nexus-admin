@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap");
 
 /* Custom Scrollbar */
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -20,6 +21,7 @@
 }
 
 /* Subtle Grid Background Effect */
+
 .bg-grid-pattern {
   background-image: linear-gradient(to right, #1f2937 1px, transparent 1px),
     linear-gradient(to bottom, #1f2937 1px, transparent 1px);
@@ -28,6 +30,7 @@
 }
 
 /* Custom Scrollbar Utility */
+
 .custom-scrollbar::-webkit-scrollbar {
   width: 4px;
 }
@@ -46,6 +49,7 @@
 }
 
 /* Base styles */
+
 body {
   margin: 0;
   padding: 0;

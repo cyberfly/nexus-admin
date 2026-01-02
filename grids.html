@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <%- head %>
+    <title>Nexus Admin | Grids</title>
+    <style>
+      /* Grid Item Base Styles for Demo */
+      .grid-demo-item {
+        @apply flex items-center justify-center rounded-xl p-4 text-slate-300 font-medium border border-white/5 transition-all duration-300 hover:border-white/20;
+        background: linear-gradient(
+          145deg,
+          rgba(19, 19, 31, 0.9),
+          rgba(28, 28, 46, 0.9)
+        );
+      }
+      .grid-demo-item:hover {
+        transform: translateY(-2px);
+        @apply shadow-lg shadow-black/50;
+      }
+      .grid-label {
+        @apply text-xs text-slate-500 mt-1;
+      }
+
+      .grid-highlight-1 {
+        @apply bg-cyan-500/10 text-cyan-400 border-cyan-500/20;
+      }
+      .grid-highlight-2 {
+        @apply bg-fuchsia-500/10 text-fuchsia-400 border-fuchsia-500/20;
+      }
+      .grid-highlight-3 {
+        @apply bg-emerald-500/10 text-emerald-400 border-emerald-500/20;
+      }
+      .grid-highlight-4 {
+        @apply bg-amber-500/10 text-amber-400 border-amber-500/20;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-dark-950 text-slate-300 antialiased selection:bg-cyan-500/30 selection:text-cyan-200 overflow-hidden"
+    x-data="{ sidebarOpen: false }"
+  >
+    <!-- Background Decoration -->
+    <div class="fixed inset-0 z-0 pointer-events-none">
+      <div
+        class="absolute top-0 left-0 w-full h-96 bg-grid-pattern opacity-[0.05]"
+      ></div>
+      <div
+        class="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-purple-900/20 rounded-full blur-[128px]"
+      ></div>
+      <div
+        class="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-cyan-900/20 rounded-full blur-[128px]"
+      ></div>
+    </div>
+
+    <div class="relative z-10 flex h-screen overflow-hidden">
+      <!-- Sidebar -->
+      <%- sidebar %>
+
+      <!-- Main Content -->
+      <main class="flex-1 flex flex-col h-screen overflow-hidden relative">
+        <!-- Header -->
+        <%- header %>
+
+        <!-- Main Scrollable Area -->
+        <div class="flex-1 overflow-y-auto p-8 relative scroll-smooth fade-in">
+          <div class="mb-10">
+            <h1 class="text-3xl font-bold text-white mb-2">Grid Systems</h1>
+            <p class="text-slate-400 max-w-2xl">
+              Powerful grid layouts powered by Tailwind CSS. Explore responsive
+              configurations, column variations, and creative grid systems for
+              modern dashboard designs.
+            </p>
+          </div>
+
+          <div class="space-y-12">
+            <!-- Standard Column Grids -->
+            <section class="space-y-6">
+              <h2 class="text-xl font-semibold text-white flex items-center">
+                <span
+                  class="w-1.5 h-6 bg-cyan-400 rounded-full mr-3 shadow-[0_0_8px_rgba(34,211,238,0.8)]"
+                ></span>
+                Standard Column Grids
+              </h2>
+              <div
+                class="bg-dark-900/40 border border-white/5 rounded-2xl p-6 space-y-6"
+              >
+                <!-- 1 Column -->
+                <div>
+                  <div class="text-sm text-slate-500 mb-2">grid-cols-1</div>
+                  <div class="grid grid-cols-1 gap-4">
+                    <div class="grid-demo-item h-12">1</div>
+                  </div>
+                </div>
+                <!-- 2 Columns -->
+                <div>
+                  <div class="text-sm text-slate-500 mb-2">grid-cols-2</div>
+                  <div class="grid grid-cols-2 gap-4">
+                    <div class="grid-demo-item h-12">1</div>
+                    <div class="grid-demo-item h-12">2</div>
+                  </div>
+                </div>
+                <!-- 3 Columns -->
+                <div>
+                  <div class="text-sm text-slate-500 mb-2">grid-cols-3</div>
+                  <div class="grid grid-cols-3 gap-4">
+                    <div class="grid-demo-item h-12">1</div>
+                    <div class="grid-demo-item h-12">2</div>
+                    <div class="grid-demo-item h-12">3</div>
+                  </div>
+                </div>
+                <!-- 4 Columns -->
+                <div>
+                  <div class="text-sm text-slate-500 mb-2">grid-cols-4</div>
+                  <div class="grid grid-cols-4 gap-4">
+                    <div class="grid-demo-item h-12">1</div>
+                    <div class="grid-demo-item h-12">2</div>
+                    <div class="grid-demo-item h-12">3</div>
+                    <div class="grid-demo-item h-12">4</div>
+                  </div>
+                </div>
+                <!-- 12 Columns -->
+                <div>
+                  <div class="text-sm text-slate-500 mb-2">
+                    grid-cols-12 (The Master Grid)
+                  </div>
+                  <div class="grid grid-cols-12 gap-2">
+                    <template x-for="i in 12">
+                      <div class="grid-demo-item h-10 text-xs" x-text="i"></div>
+                    </template>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Responsive Grids -->
+            <section class="space-y-6">
+              <h2 class="text-xl font-semibold text-white flex items-center">
+                <span
+                  class="w-1.5 h-6 bg-fuchsia-500 rounded-full mr-3 shadow-[0_0_8px_rgba(217,70,239,0.8)]"
+                ></span>
+                Responsive Grids
+              </h2>
+              <p class="text-slate-400 text-sm">
+                Resize your browser to see the effect. Moves from 1 -> 2 -> 3 ->
+                4 columns.
+              </p>
+              <div class="bg-dark-900/40 border border-white/5 rounded-2xl p-6">
+                <div
+                  class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+                >
+                  <div class="grid-demo-item h-24 grid-highlight-1">
+                    <div class="text-center">
+                      <div>Col 1</div>
+                      <div class="text-xs opacity-70">Always visible</div>
+                    </div>
+                  </div>
+                  <div class="grid-demo-item h-24">Col 2</div>
+                  <div class="grid-demo-item h-24">Col 3</div>
+                  <div class="grid-demo-item h-24">Col 4</div>
+                  <div class="grid-demo-item h-24">Col 5</div>
+                  <div class="grid-demo-item h-24">Col 6</div>
+                  <div class="grid-demo-item h-24">Col 7</div>
+                  <div class="grid-demo-item h-24">Col 8</div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Bento / Asymmetrical Layouts -->
+            <section class="space-y-6">
+              <h2 class="text-xl font-semibold text-white flex items-center">
+                <span
+                  class="w-1.5 h-6 bg-neon-green rounded-full mr-3 shadow-[0_0_8px_rgba(10,255,240,0.8)]"
+                ></span>
+                Bento / Asymmetrical Layouts
+              </h2>
+              <div class="bg-dark-900/40 border border-white/5 rounded-2xl p-6">
+                <div
+                  class="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[minmax(100px,auto)]"
+                >
+                  <!-- Big Featured Block -->
+                  <div
+                    class="grid-demo-item md:col-span-2 md:row-span-2 min-h-[220px] flex flex-col items-start justify-between p-6 !bg-gradient-to-br from-indigo-900/40 to-dark-900"
+                  >
+                    <div class="p-3 bg-indigo-500 rounded-lg">
+                      <svg
+                        class="w-6 h-6 text-white"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M13 10V3L4 14h7v7l9-11h-7z"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 class="text-lg font-bold text-white">Main Feature</h3>
+                      <p class="text-sm text-slate-400 mt-1">
+                        Occupies 2x2 grid space. Perfect for charts or primary
+                        content.
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Wide Strip -->
+                  <div class="grid-demo-item md:col-span-2">
+                    <span class="text-sm">Wide Widget (col-span-2)</span>
+                  </div>
+
+                  <!-- Single Block -->
+                  <div class="grid-demo-item">1x1</div>
+
+                  <!-- Single Block -->
+                  <div class="grid-demo-item">1x1</div>
+
+                  <!-- Tall Block -->
+                  <div
+                    class="grid-demo-item md:row-span-2 h-full grid-highlight-2 flex flex-col"
+                  >
+                    <span class="mb-auto">Tall Widget</span>
+                    <span class="text-3xl font-bold mt-2">84%</span>
+                  </div>
+
+                  <!-- Wide Bottom -->
+                  <div class="grid-demo-item md:col-span-3">
+                    <div class="flex items-center justify-between w-full px-4">
+                      <span>Footer Strip (col-span-3)</span>
+                      <div class="flex space-x-2">
+                        <div class="w-2 h-2 rounded-full bg-slate-500"></div>
+                        <div class="w-2 h-2 rounded-full bg-slate-500"></div>
+                        <div class="w-2 h-2 rounded-full bg-slate-500"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Nested Grids & Complex Cards -->
+            <section class="space-y-6">
+              <h2 class="text-xl font-semibold text-white flex items-center">
+                <span
+                  class="w-1.5 h-6 bg-neon-orange rounded-full mr-3 shadow-[0_0_8px_rgba(255,87,34,0.8)]"
+                ></span>
+                Nested Grids
+              </h2>
+              <div class="bg-dark-900/40 border border-white/5 rounded-2xl p-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                  <!-- Card with Internal Grid -->
+                  <div
+                    class="p-6 rounded-2xl bg-dark-900 border border-white/5 shadow-lg"
+                  >
+                    <h3 class="text-lg font-medium text-white mb-4">
+                      Device Status
+                    </h3>
+                    <!-- Internal Grid -->
+                    <div class="grid grid-cols-2 gap-3">
+                      <div
+                        class="bg-dark-950/50 p-3 rounded-lg border border-white/5"
+                      >
+                        <div class="text-xs text-slate-500">CPU</div>
+                        <div class="text-neon-blue font-mono">45%</div>
+                      </div>
+                      <div
+                        class="bg-dark-950/50 p-3 rounded-lg border border-white/5"
+                      >
+                        <div class="text-xs text-slate-500">RAM</div>
+                        <div class="text-neon-purple font-mono">2.4GB</div>
+                      </div>
+                      <div
+                        class="bg-dark-950/50 p-3 rounded-lg border border-white/5"
+                      >
+                        <div class="text-xs text-slate-500">Disk</div>
+                        <div class="text-neon-green font-mono">80%</div>
+                      </div>
+                      <div
+                        class="bg-dark-950/50 p-3 rounded-lg border border-white/5"
+                      >
+                        <div class="text-xs text-slate-500">Temp</div>
+                        <div class="text-neon-yellow font-mono">42°C</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Card with Quick Actions Grid -->
+                  <div
+                    class="p-6 rounded-2xl bg-dark-900 border border-white/5 shadow-lg"
+                  >
+                    <h3 class="text-lg font-medium text-white mb-4">
+                      Quick Actions
+                    </h3>
+                    <!-- Internal Grid -->
+                    <div class="grid grid-cols-4 gap-2">
+                      <template x-for="i in 8">
+                        <button
+                          class="aspect-square rounded-lg bg-white/5 hover:bg-cyan-500/20 hover:text-cyan-400 hover:border-cyan-500/30 border border-transparent transition-all flex items-center justify-center group"
+                        >
+                          <svg
+                            class="w-5 h-5 opacity-60 group-hover:opacity-100"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                            />
+                          </svg>
+                        </button>
+                      </template>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Auto-Fit/Auto-Fill Dynamic Grid -->
+            <section class="space-y-6">
+              <h2 class="text-xl font-semibold text-white flex items-center">
+                <span
+                  class="w-1.5 h-6 bg-pink-500 rounded-full mr-3 shadow-[0_0_8px_rgba(236,72,153,0.8)]"
+                ></span>
+                Dynamic Auto-Fit Grid
+              </h2>
+              <div class="bg-dark-900/40 border border-white/5 rounded-2xl p-6">
+                <p class="text-sm text-slate-400 mb-4">
+                  Each item is at least 150px wide. The grid fills the available
+                  space.
+                </p>
+                <div
+                  class="grid gap-4"
+                  style="
+                    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                  "
+                >
+                  <template x-for="i in 8">
+                    <div class="grid-demo-item h-20 text-sm">Auto Fit Item</div>
+                  </template>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- Spacer for visual bottom padding -->
+          <div class="h-20"></div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Vite Entry Point -->
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
