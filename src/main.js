@@ -1,21 +1,7 @@
 import './styles/main.css';
-import { createHeader } from './components/header.js';
-import { createSidebar } from './components/sidebar.js';
 
 // Initialize app
 function initApp() {
-  // Insert sidebar
-  const sidebarContainer = document.getElementById('sidebar-container');
-  if (sidebarContainer) {
-    sidebarContainer.innerHTML = createSidebar();
-  }
-
-  // Insert header
-  const headerContainer = document.getElementById('header-container');
-  if (headerContainer) {
-    headerContainer.innerHTML = createHeader();
-  }
-
   // Setup mobile menu toggle
   setupMobileMenu();
 }
