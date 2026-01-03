@@ -1,6 +1,9 @@
 <aside
   id="sidebar"
-  class="fixed inset-y-0 left-0 z-50 w-64 bg-dark-900/80 backdrop-blur-xl border-r border-white/5 transition-transform duration-300 lg:static lg:translate-x-0 transform -translate-x-full flex flex-col"
+  class="fixed inset-y-0 left-0 z-50 w-64 bg-dark-900/80 backdrop-blur-xl border-r border-white/5 transition-transform duration-300 lg:static lg:translate-x-0 transform flex flex-col"
+  :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'"
+  @click.outside="sidebarOpen = false"
+  @keydown.window.escape="sidebarOpen = false"
 >
   <!-- Logo -->
   <div

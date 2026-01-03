@@ -1,14 +1,15 @@
 # Nexus Admin Dashboard
 
-A modern, dark-themed admin dashboard built with Vite and Vanilla JavaScript featuring modular components.
+A modern, dark-themed admin dashboard built with Vite and Vanilla JavaScript featuring modular HTML components and a cyberpunk-inspired aesthetic.
 
 ## Features
 
-- **Vite Build System**: Fast development and optimized production builds
-- **Modular Components**: Header and Sidebar as reusable JavaScript modules
-- **No Framework**: Pure vanilla JavaScript - lightweight and fast
-- **Dark Theme**: Cyberpunk-inspired neon design
-- **Responsive**: Mobile-friendly with sidebar toggle
+- **Vite Build System**: Fast development and optimized production builds.
+- **Modular HTML Components**: Shared UI elements like Head, Header, and Sidebar managed via Vite templates.
+- **No Heavy Frameworks**: Built using Vanilla JavaScript and enhanced with Alpine.js for lightweight interactivity.
+- **Dark Neon Theme**: Premium cyberpunk design with vibrant accents.
+- **Responsive Layout**: Seamlessly transitions between desktop and mobile views with a functional sidebar toggle.
+- **Extensive UI Components**: A wide range of pre-built component pages (Alerts, Badges, Charts, Tables, etc.).
 
 ## Project Structure
 
@@ -16,14 +17,15 @@ A modern, dark-themed admin dashboard built with Vite and Vanilla JavaScript fea
 nexus-admin/
 ├── src/
 │   ├── components/
-│   │   ├── header.js       # Header component
-│   │   └── sidebar.js      # Sidebar component
+│   │   ├── head.html       # Shared <head> metadata and scripts
+│   │   ├── header.html     # Top navigation bar
+│   │   └── sidebar.html    # Side navigation menu
 │   ├── styles/
-│   │   └── main.css        # Global styles
-│   └── main.js             # Application entry point
-├── index.html              # Main HTML file
-├── vite.config.js          # Vite configuration
-└── package.json            # Project dependencies
+│   │   └── main.css        # Global CSS variables and styles
+│   └── main.js             # Application entry point/styles import
+├── index.html              # Dashboard Home
+├── vite.config.js          # Vite configuration with HTML injection logic
+└── package.json            # Project dependencies and scripts
 ```
 
 ## Getting Started
@@ -40,56 +42,70 @@ npm install
 npm run dev
 ```
 
-This will start the Vite dev server at http://localhost:3000
+This will start the Vite dev server at http://localhost:3000 (with auto-open enabled).
 
 ### Build for Production
+
+**Minified Build:**
 
 ```bash
 npm run build
 ```
 
-This will create an optimized production build in the `dist/` directory.
-
-### Preview Production Build
+**Non-Minified Build (for debugging/review):**
 
 ```bash
-npm run preview
+npm run html
 ```
+
+Proceeds will be generated in the `dist/` directory.
+
+### Deployment
+
+```bash
+npm run deploy
+```
+
+Pushes the `dist` folder to the `gh-pages` branch.
 
 ## Component System
 
-The dashboard uses a simple component include system:
+The dashboard utilizes `vite-plugin-html` to inject reusable HTML snippets into all pages. This allows for modular development while maintaining static output.
 
-### Header Component (`src/components/header.js`)
-- Search bar
-- Notification button
-- Settings button
-- Mobile menu toggle
+### Shared Components
 
-### Sidebar Component (`src/components/sidebar.js`)
-- Logo
-- Navigation menu
-- User profile section
+- **Head (`src/components/head.html`)**: Contains meta tags, Google Fonts (Outfit), Tailwind CDN config, and Alpine.js.
+- **Header (`src/components/header.html`)**: Desktop/Mobile top bar with search, notifications, and profile.
+- **Sidebar (`src/components/sidebar.html`)**: Navigation links to all dashboard sections.
 
-### Usage
+### Usage in HTML files
 
-Components are automatically loaded via `src/main.js`:
+Inject components using the EJS-like syntax:
 
-```javascript
-import { createHeader } from './components/header.js';
-import { createSidebar } from './components/sidebar.js';
+```html
+<%- head %> <%- header %> <%- sidebar %>
 ```
 
-## Styling
+## Available UI Pages
 
-- **Tailwind CSS**: Loaded via CDN for rapid development
-- **Custom Fonts**: Outfit font family from Google Fonts
-- **Custom Scrollbar**: Styled to match dark theme
-- **Grid Pattern Background**: Subtle cyberpunk aesthetic
+- **Dashboard**: `index.html`
+- **Elements**: `alerts.html`, `badge.html`, `buttons.html`, `button_group.html`, `cards.html`, `breadcrumb.html`
+- **Advanced**: `charts.html`, `modal.html`, `popover.html`, `tooltips.html`, `toast.html`
+- **Data**: `tables.html`, `pagination.html`, `timeline.html`, `grids.html`
+- **Forms**: `forms.html`
+- **Other**: `about.html`, `tabs.html`
+
+## Styling & Libraries
+
+- **Tailwind CSS**: Loaded via CDN for utility-first styling.
+- **Alpine.js**: Handles UI state (sidebar toggle, dropdowns, etc.) with zero runtime configuration.
+- **Custom Fonts**: Outfit font family from Google Fonts.
+- **Charts**: Integrated chart libraries for data visualization.
 
 ## Browser Support
 
-Modern browsers with ES6+ support:
+Targeting modern browsers with ES6+ support:
+
 - Chrome/Edge (latest)
 - Firefox (latest)
 - Safari (latest)
