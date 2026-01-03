@@ -13,40 +13,6 @@
 />
 
 <!-- Tailwind CSS -->
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    darkMode: "class",
-    theme: {
-      extend: {
-        fontFamily: {
-          sans: ["Outfit", "sans-serif"],
-        },
-        colors: {
-          dark: {
-            950: "#0a0a0f", // Main BG
-            900: "#13131f", // Card BG
-            800: "#1c1c2e", // Hover/Secondary
-          },
-          neon: {
-            blue: "#00f2ff",
-            purple: "#bc13fe",
-            green: "#0afff0", // Cyberpunk green
-          },
-        },
-        boxShadow: {
-          "neon-blue":
-            '0 0 5px theme("colors.cyan.500"), 0 0 20px theme("colors.cyan.900")',
-          "neon-purple":
-            '0 0 5px theme("colors.fuchsia.500"), 0 0 20px theme("colors.fuchsia.900")',
-        },
-        animation: {
-          "spin-slow": "spin 3s linear infinite",
-        },
-      },
-    },
-  };
-</script>
 
 <!-- Alpine.js -->
 <script
@@ -54,51 +20,9 @@
   src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
 ></script>
 
-<style>
-  [x-cloak] {
-    display: none !important;
-  }
-
-  /* Custom Scrollbar */
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
-  ::-webkit-scrollbar-track {
-    background: #0a0a0f;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #334155;
-    border-radius: 4px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: #475569;
-  }
-
-  /* Utility for scrollable areas */
-  .custom-scrollbar::-webkit-scrollbar {
-    width: 5px;
-  }
-  .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #334155;
-    border-radius: 10px;
-  }
-  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #475569;
-  }
-
-  /* Subtle Grid Background Effect */
-  .bg-grid-pattern {
-    background-image: linear-gradient(to right, #1f2937 1px, transparent 1px),
-      linear-gradient(to bottom, #1f2937 1px, transparent 1px);
-    background-size: 40px 40px;
-    mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
-  }
-</style>
-
     <title>Tabs & Accordions | Nexus Admin</title>
-    <script type="module" crossorigin src="/assets/main-BS86AAur.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/main-BRvsZqgH.css">
+    <script type="module" crossorigin src="/assets/main-BQAz5w5-.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-DfCoYB2Z.css">
   </head>
   <body
     class="bg-dark-950 text-slate-300 antialiased selection:bg-cyan-500/30 selection:text-cyan-200 overflow-hidden"
@@ -117,7 +41,7 @@
       ></div>
     </div>
 
-    <div class="relative z-10 flex h-screen overflow-hidden">
+    <div class="relative z-10 flex h-[100dvh] overflow-hidden">
       <!-- Sidebar -->
       <aside
   id="sidebar"
@@ -655,7 +579,7 @@
 
 
       <!-- Main Content -->
-      <main class="flex-1 flex flex-col h-screen overflow-hidden relative">
+      <main class="flex-1 flex flex-col min-h-0 relative">
         <!-- Header -->
         <header
   class="h-20 flex items-center justify-between px-8 border-b border-white/5 bg-dark-950/80 backdrop-blur-md z-40"
