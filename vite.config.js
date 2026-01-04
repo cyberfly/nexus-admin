@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import { createHtmlPlugin } from "vite-plugin-html";
 import { readFileSync, readdirSync } from "fs";
 import { resolve } from "path";
+import tailwindcss from "@tailwindcss/vite";
 
 // Get all HTML files in the root directory
 const htmlFiles = readdirSync(__dirname).filter((file) =>
@@ -43,6 +44,7 @@ export default defineConfig({
       minify: isMinify,
       pages: pages,
     }),
+    tailwindcss(),
   ],
   server: {
     port: 3000,

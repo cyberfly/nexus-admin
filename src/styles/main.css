@@ -1,4 +1,38 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", sans-serif;
+
+  --color-dark-950: #0a0a0f;
+  --color-dark-900: #13131f;
+  --color-dark-800: #1c1c2e;
+
+  --color-neon-blue: #00f2ff;
+  --color-neon-purple: #bc13fe;
+  --color-neon-green: #0afff0;
+
+  --shadow-neon-blue: 0 0 5px var(--color-cyan-500),
+    0 0 20px var(--color-cyan-900);
+  --shadow-neon-purple: 0 0 5px var(--color-fuchsia-500),
+    0 0 20px var(--color-fuchsia-900);
+
+  --animate-spin-slow: spin 3s linear infinite;
+}
+
+/* Alpine.js cloak */
+[x-cloak] {
+  display: none !important;
+}
+
+/* Base styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Outfit", sans-serif;
+  background-color: var(--color-dark-950);
+  color: white;
+}
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
@@ -7,7 +41,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0f;
+  background: var(--color-dark-950);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -19,6 +53,18 @@
   background: #475569;
 }
 
+/* Utility for scrollable areas */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
 /* Subtle Grid Background Effect */
 .bg-grid-pattern {
   background-image: linear-gradient(to right, #1f2937 1px, transparent 1px),
@@ -27,27 +73,32 @@
   mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
 }
 
-/* Custom Scrollbar Utility */
-.custom-scrollbar::-webkit-scrollbar {
-  width: 4px;
+/* Grid Demo Styles (moved from grids.html) */
+.grid-demo-item {
+  @apply flex items-center justify-center rounded-xl p-4 text-slate-300 font-medium border border-white/5 transition-all duration-300 hover:border-white/20;
+  background: linear-gradient(
+    145deg,
+    rgba(19, 19, 31, 0.9),
+    rgba(28, 28, 46, 0.9)
+  );
+}
+.grid-demo-item:hover {
+  transform: translateY(-2px);
+  @apply shadow-lg shadow-black/50;
+}
+.grid-label {
+  @apply text-xs text-slate-500 mt-1;
 }
 
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: transparent;
+.grid-highlight-1 {
+  @apply bg-cyan-500/10 text-cyan-400 border-cyan-500/20;
 }
-
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
+.grid-highlight-2 {
+  @apply bg-fuchsia-500/10 text-fuchsia-400 border-fuchsia-500/20;
 }
-
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.2);
+.grid-highlight-3 {
+  @apply bg-emerald-500/10 text-emerald-400 border-emerald-500/20;
 }
-
-/* Base styles */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: "Outfit", sans-serif;
+.grid-highlight-4 {
+  @apply bg-amber-500/10 text-amber-400 border-amber-500/20;
 }
